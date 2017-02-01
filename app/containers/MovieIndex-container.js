@@ -1,10 +1,10 @@
+import React from 'react';
 import { connect } from 'react-redux';
 import { addMovies } from '../actions';
 import MovieIndex from '../components/MovieIndex';
 
-const mapStateToProps = ({appReducer}) => {
-  console.log(appReducer);
-  return {}
+const mapStateToProps = (state) => {
+  return state
 }
 
 // const mapDispatchToProps = (dispatch) => {

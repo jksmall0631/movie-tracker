@@ -19,18 +19,8 @@ export default class App extends Component {
         return response.json()})
       .then(response => {
         let movies = response.results
-        this.props.handleAPI(movies)})
-   const server = ('http://localhost:3000/api/users')
- //   fetch(server, {
- //     method:'POST',
- //     headers: {
- //       'Content-Type': 'application/json',
- //       'Accept': 'application/json',
- //     },
- //     body: JSON.stringify({email: 'tman2272@aol.com', password:'password'})
- //   })
- //   .then(response => response.json())
- //   .then(json => console.log(json));
+        this.props.handleAPI(movies)
+    })
   }
 
 

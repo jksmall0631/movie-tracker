@@ -13,6 +13,20 @@ export default class UserSignIn extends Component {
     console.log('yo')
   }
 
+  handleSignIn (username, password) {
+    const server = ('http://localhost:3000/api/users')
+    fetch(server, {
+      method:'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({email: username, password: password})
+    })
+    .then(response => response.json())
+    .then(json => console.log(json));
+  }
+
   render(){
     let {username, password} = this.state
     return(
@@ -26,7 +40,7 @@ export default class UserSignIn extends Component {
           placeholder='Password'
           value={password}
           onChange={(e) => this.setState({ password : e.target.value})} />
-        <button onClick={()=> this.signIn({username, password})}>Sign In</button>
+        <button onClick={()=> this.handleSignIn(username, password)}>Sign In</button>
       </section>
     )
   }

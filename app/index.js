@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import {createStore} from 'redux';
 import App from './containers/App-container';
-import MovieIndex from './components/movieIndex';
+import MovieIndex from './containers/MovieIndex-container';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import allReducers from './reducers/index';
 import {Provider} from 'react-redux';

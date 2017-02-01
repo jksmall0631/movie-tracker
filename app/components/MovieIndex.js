@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
-const MovieIndex = ({props}) => {
-  console.log(props)
+const MovieIndex = () => {
   return (
     <div>
     MOVIES

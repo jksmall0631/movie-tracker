@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 
-export default class MovieIndex extends Component {
-  constructor() {
-    super();
-  }
-
-  render() {
-    return (
-      <div>
-      MOVIES
-      </div>
-    )
-  }
+const MovieIndex = ({props}) => {
+  console.log(props)
+  return (
+    <div>
+    MOVIES
+    </div>
+  )
 }
+
+export default MovieIndex;

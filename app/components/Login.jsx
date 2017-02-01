@@ -20,8 +20,10 @@ export default class Login extends Component{
           placeholder='Password'
           onChange={(e) = this.setState({password: e.target.value})}
           value={this.state.password}/>
-        <button onClick={() => this.props.handleClick(this.state.username, this.state.password)}></button>
+        <button></button>
       </section>
     )
   }
 }
+
+// onClick={() => this.props.handleClick(this.state.username, this.state.password)}

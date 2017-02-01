@@ -5,6 +5,7 @@ import App from './containers/App-container';
 import MovieIndex from './containers/MovieIndex-container';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import allReducers from './reducers/index';
+import Login from './components/Login';
 import {Provider} from 'react-redux';
 
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
@@ -15,7 +16,7 @@ const router = (
     <Router history={browserHistory} >
       <Route path='/' component={App}>
         <IndexRoute component={MovieIndex} />
-        {/* <Route path='/login' component={Login} /> */}
+        <Route path='/login' component={Login} />
       </Route>
     </Router>
   </Provider>

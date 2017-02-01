@@ -14,13 +14,26 @@ export default class App extends Component {
 
   componentWillMount() {
     const movieDatabase = ('https://api.themoviedb.org/3/discover/movie?api_key=1d0514b501ec10b990725f0f8f54ce01')
-    fetch(movieDatabase).then((response) => {
-    return response.json();
-    }).then((response) => {
-    let movies = response.results
-    this.props.handleAPI(movies)
-   })
- }
+    fetch(movieDatabase)
+      .then(response => {
+        return response.json()})
+      .then(response => {
+        let movies = response.results
+        this.props.handleAPI(movies)})
+   const server = ('http://localhost:3000/api/users')
+ //   fetch(server, {
+ //     method:'POST',
+ //     headers: {
+ //       'Content-Type': 'application/json',
+ //       'Accept': 'application/json',
+ //     },
+ //     body: JSON.stringify({email: 'tman2272@aol.com', password:'password'})
+ //   })
+ //   .then(response => response.json())
+ //   .then(json => console.log(json));
+  }
+
+
 
   toggleButton() {
    this.state.buttonText === 'Sign In' ?

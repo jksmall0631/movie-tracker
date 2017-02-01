@@ -1,29 +1,19 @@
 import React, {Component} from 'react';
+import UserSignIn from './UserSignIn';
+import CreateUser from './CreateUser';
 
-export default class Login extends Component{
-  constructor(){
-    super();
-    this.state = {
-      username: '',
-      password: '',
-    }
-  }
 
-  render(){
-    return(
-      <section>
-        <input
-          placeholder='Username'
-          onChange={(e) = this.setState({username: e.target.value})}
-          value={this.state.username}/>
-        <input
-          placeholder='Password'
-          onChange={(e) = this.setState({password: e.target.value})}
-          value={this.state.password}/>
-        <button></button>
-      </section>
-    )
-  }
+const Login = () => {
+
+  return(
+    <section>
+      <UserSignIn />
+      <CreateUser />  
+    </section>
+  )
+
 }
+
+export default Login;
 
 // onClick={() => this.props.handleClick(this.state.username, this.state.password)}

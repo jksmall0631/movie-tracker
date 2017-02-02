@@ -17,6 +17,7 @@ const router = (
       <Route path='/' component={App}>
         <IndexRoute component={MovieIndex} />
         <Route path='/login' component={Login} />
+        <Route path='/users/:id/favorites' componenent={MovieIndex} />
       </Route>
     </Router>
   </Provider>

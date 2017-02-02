@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router'
+
 
 const MovieIndex = ({movieReducer, userSignInReducer}) => {
 
   const addFavorite = (userId, movie) => {
-    debugger
     const server = ('http://localhost:3000/api/users/favorites/new')
     fetch(server, {
       method:'POST',
@@ -17,7 +18,19 @@ const MovieIndex = ({movieReducer, userSignInReducer}) => {
     .then(response => console.log(response))
   }
 
-  console.log(movieReducer);
+  const showFavorites = (userId) => {
+    const server = (`http://localhost:3000/api/users/${userId}/favorites`)
+    fetch(server, {
+      method:'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+    })
+    .then(response => response.json())
+    .then(response => console.log(response))
+  }
+
   let movie = movieReducer.map( movie => {
     return <article key={ movie.id }>
               <img src={ 'https://image.tmdb.org/t/p/w342' + movie.poster_path } />
@@ -29,6 +42,11 @@ const MovieIndex = ({movieReducer, userSignInReducer}) => {
 
   return (
     <div>
+      <Link to={'users/' + userSignInReducer.id + '/favorites'} >
+        <button onClick={()=> showFavorites(userSignInReducer.id)}>
+          Show Favorites
+        </button>
+      </Link>
     {movie}
     </div>
   )

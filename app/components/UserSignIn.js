@@ -22,7 +22,8 @@ export default class UserSignIn extends Component {
       body: JSON.stringify({email: username, password: password})
     })
     .then(response => response.json())
-    .then(data => this.props.handleUserAPI(data.data));
+    .then(data => this.props.handleUserAPI(data.data))
+    .catch(e => alert('Wrong Information'));
   }
 
   render(){

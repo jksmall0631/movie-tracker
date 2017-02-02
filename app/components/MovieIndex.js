@@ -17,10 +17,6 @@ const MovieIndex = ({movieReducer, userSignInReducer}) => {
     .then(response => console.log(response))
   }
 
-  // * ##### Add Favorite - `/users/favorites/new`
-  //   To save a favorite you must send into the body: movie_id, user_id and title, poster_path, release_date, vote_average, overview.
-  //   Keep in mind the response only gives the new favorite id
-
   console.log(movieReducer);
   let movie = movieReducer.map( movie => {
     return <article key={ movie.id }>

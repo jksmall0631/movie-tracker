@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import UserSignIn from './UserSignIn';
+import UserSignIn from '../containers/UserSignIn-container';
 import CreateUser from './CreateUser';
 
 
@@ -8,12 +8,10 @@ const Login = () => {
   return(
     <section>
       <UserSignIn />
-      <CreateUser />  
+      <CreateUser />
     </section>
   )
 
 }
 
 export default Login;
-
-// onClick={() => this.props.handleClick(this.state.username, this.state.password)}

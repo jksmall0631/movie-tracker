@@ -38,7 +38,9 @@ export default class UserSignIn extends Component {
           placeholder='Password'
           value={password}
           onChange={(e) => this.setState({ password : e.target.value})} />
-        <button onClick={()=> this.handleSignIn(username, password)}>Sign In</button>
+        <Link to='/'>
+          <button onClick={()=> this.handleSignIn(username, password)}>Sign In</button>
+        </Link>
       </section>
     )
   }

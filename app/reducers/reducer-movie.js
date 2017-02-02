@@ -1,4 +1,4 @@
-const appReducer = (state = [], action) => {
+const movieReducer = (state = [], action) => {
   switch(action.type){
     case 'ADD_MOVIES':
       return action.movies
@@ -6,4 +6,4 @@ const appReducer = (state = [], action) => {
   return state;
 }
 
-export default appReducer;
+export default movieReducer;

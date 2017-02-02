@@ -42,11 +42,11 @@ const MovieIndex = ({movieReducer, userSignInReducer}) => {
 
   return (
     <div>
-      {/* <Link to=`/users/:${key}/favorite` key={userSignInReducer.id}> */}
+      <Link to={'users/' + userSignInReducer.id + '/favorites'} >
         <button onClick={()=> showFavorites(userSignInReducer.id)}>
           Show Favorites
         </button>
-      {/* </Link> */}
+      </Link>
     {movie}
     </div>
   )

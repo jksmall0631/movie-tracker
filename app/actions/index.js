@@ -1,10 +1,9 @@
-// export const login = (username, password) => {
-//   return {
-//     type: 'USER_LOGIN',
-//     username,
-//     password,
-//   }
-// }
+export const userSignIn = (data) => {
+  return {
+    type: 'USER_LOGIN',
+    data
+  }
+}
 
 export const addMovies = (movies) => {
   return {

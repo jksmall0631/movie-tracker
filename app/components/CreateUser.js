@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-
 export default class CreateUser extends Component {
   constructor(){
     super();
@@ -9,7 +8,6 @@ export default class CreateUser extends Component {
       password: '',
     }
   }
-
   handleCreateUser (name, email, password) {
     const server = ('http://localhost:3000/api/users/new')
     fetch(server, {
@@ -23,11 +21,8 @@ export default class CreateUser extends Component {
     .then(response => response.json())
     .then(json => console.log(json));
   }
-
   render(){
-
     let {name, email, password} = this.state
-
     return(
       <section>
         <h2>Not a user? Make an account</h2>

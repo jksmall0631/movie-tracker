@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router';
 
 export default class UserSignIn extends Component {
   constructor(){
@@ -9,11 +10,8 @@ export default class UserSignIn extends Component {
     }
   }
 
-  signIn(username, password){
-    console.log('yo')
-  }
-
   handleSignIn (username, password) {
+    console.log(this.props)
     const server = ('http://localhost:3000/api/users')
     fetch(server, {
       method:'POST',
@@ -24,7 +22,7 @@ export default class UserSignIn extends Component {
       body: JSON.stringify({email: username, password: password})
     })
     .then(response => response.json())
-    .then(json => console.log(json));
+    .then(data => this.props.handleUserAPI(data.data));
   }
 
   render(){

@@ -35,7 +35,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <h1>Movie Watcher</h1>
+        <h1>Not Quite Netflix</h1>
         <Link to={this.state.linkTo}>
           <button onClick={()=> this.toggleButton() }>{this.state.buttonText}</button>
         </Link>

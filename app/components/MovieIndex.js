@@ -18,19 +18,6 @@ const MovieIndex = ({movieReducer, userSignInReducer}) => {
     .then(response => console.log(response))
   }
 
-  const showFavorites = (userId) => {
-    const server = (`http://localhost:3000/api/users/${userId}/favorites`)
-    fetch(server, {
-      method:'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-    })
-    .then(response => response.json())
-    .then(response => console.log(response))
-  }
-
   let movie = movieReducer.map( movie => {
     return <article key={ movie.id }>
               <img src={ 'https://image.tmdb.org/t/p/w342' + movie.poster_path } />
@@ -44,7 +31,7 @@ const MovieIndex = ({movieReducer, userSignInReducer}) => {
     <div>
       <Link to={'users/' + userSignInReducer.id + '/favorites'} >
       {userSignInReducer.id ?
-        <button onClick={()=> showFavorites(userSignInReducer.id)}> Show Favorites </button>
+        <button> Show Favorites </button>
          : ''}
       </Link>
     {movie}

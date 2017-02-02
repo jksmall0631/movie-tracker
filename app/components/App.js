@@ -26,9 +26,9 @@ export default class App extends Component {
 
 
   toggleButton() {
-   this.state.buttonText === 'Sign In' ?
-    this.setState({ buttonText: 'Home', linkTo: '/' }) :
-    this.setState({ buttonText: 'Sign In', linkTo: '/login' })
+    this.state.buttonText === 'Sign In' ?
+      this.setState({ buttonText: 'Home', linkTo: '/' }) :
+      this.setState({ buttonText: 'Sign In', linkTo: '/login' })
  }
 
 
@@ -37,7 +37,9 @@ export default class App extends Component {
       <div>
         <h1>Not Quite Netflix</h1>
         <Link to={this.state.linkTo}>
-          <button onClick={()=> this.toggleButton() }>{this.state.buttonText}</button>
+          {!this.props.userSignInReducer.id ?
+             <button className='sign-in-btn' onClick={()=> this.toggleButton() }>{this.state.buttonText}</button>
+             : ''}
         </Link>
         {this.props.children}
       </div>

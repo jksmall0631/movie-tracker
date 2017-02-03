@@ -7,6 +7,7 @@ export default class UserSignIn extends Component {
     this.state = {
       username: '',
       password: '',
+      error: '',
     }
   }
 
@@ -23,11 +24,11 @@ export default class UserSignIn extends Component {
     })
     .then(response => response.json())
     .then(data => this.props.handleUserAPI(data.data))
-    .catch(e => alert('Wrong Information'));
+    .catch(e => this.setState({error: e}));
   }
 
   render(){
-    let {username, password} = this.state
+    let {username, password, error} = this.state
     return(
       <section>
         <h2>Already a user? Sign In</h2>
@@ -40,6 +41,7 @@ export default class UserSignIn extends Component {
           value={password}
           onChange={(e) => this.setState({ password : e.target.value})} />
         <button onClick={()=> this.handleSignIn(username, password)}>Sign In</button>
+        { error ? <p>Invalid Email/Password</p> : ''}
       </section>
     )
   }

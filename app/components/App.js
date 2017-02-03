@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
-// import Header from './Header';
 
 export default class App extends Component {
 
@@ -18,7 +17,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
+      <div class='header'>
         <h1>Not Quite Netflix</h1>
         <Link to='/login'>
           {!this.props.userSignInReducer.id ? <button > Sign In </button> : ''}

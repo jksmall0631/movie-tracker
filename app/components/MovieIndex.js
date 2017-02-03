@@ -19,16 +19,16 @@ const MovieIndex = ({movieReducer, userSignInReducer}) => {
   }
 
   let movie = movieReducer.map( movie => {
-    return <article key={ movie.id }>
+    return <article className='movie-card' key={ movie.id }>
               <img src={ 'https://image.tmdb.org/t/p/w342' + movie.poster_path } />
               <h3>{ movie.title }</h3>
               <p>{ movie.overview }</p>
-              <button onClick={ () => addFavorite(userSignInReducer.id, movie) }>Favorite</button>
+              <button onClick={ () => addFavorite(userSignInReducer.id, movie) }> Favorite </button>
            </article>
          })
 
   return (
-    <div>
+    <div className='movie-container'>
       <Link to={'users/' + userSignInReducer.id + '/favorites'} >
         {userSignInReducer.id ? <button onClick={()=> showFavorites(userSignInReducer.id)}> Show Favorites </button> : ''}
       </Link>

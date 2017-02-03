@@ -38,7 +38,7 @@ export default class UserSignIn extends Component {
     .then(data => {
           this.props.handleUserAPI(data.data)
           this.showFavorites(data.data.id) })
-    .catch(e => alert('Wrong Information'));
+    .catch(e => alert('You have entered an incorred username or password.'));
   }
 
   render(){

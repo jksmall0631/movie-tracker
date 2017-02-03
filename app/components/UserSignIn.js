@@ -7,6 +7,7 @@ export default class UserSignIn extends Component {
     this.state = {
       username: '',
       password: '',
+      error: '',
     }
   }
 
@@ -36,13 +37,13 @@ export default class UserSignIn extends Component {
     })
     .then(response => response.json())
     .then(data => {
-          this.props.handleUserAPI(data.data)
-          this.showFavorites(data.data.id) })
-    .catch(e => alert('You have entered an incorred username or password.'));
+        this.props.handleUserAPI(data.data)
+        this.showFavorites(data.data.id) })
+    .catch(e => this.setState({error: e}));
   }
 
   render(){
-    let {username, password} = this.state
+    let {username, password, error} = this.state
     return(
       <section>
         <h2>Already a user? Sign In</h2>
@@ -57,6 +58,7 @@ export default class UserSignIn extends Component {
         <Link to='/'>
           <button onClick={()=> this.handleSignIn(username, password)}> Sign In </button>
         </Link>
+        { error ? <p>Invalid Email/Password</p> : ''}
       </section>
     )
   }

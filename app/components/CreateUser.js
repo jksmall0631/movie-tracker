@@ -8,6 +8,7 @@ export default class CreateUser extends Component {
       name: '',
       email: '',
       password: '',
+      error: '',
     }
   }
   handleCreateUser (name, email, password) {
@@ -21,7 +22,15 @@ export default class CreateUser extends Component {
       body: JSON.stringify({name: name, email: email, password: password})
     })
     .then(response => response.json())
-    .then(json => console.log(json));
+    .then(response => this.handleError(response))
+    .then(jsoned => console.log(jsoned))
+  }
+
+  handleError(response) {
+    if (!response.success) {
+      this.setState({ error: response })
+    }
+    return response
   }
 
   render(){
@@ -42,6 +51,7 @@ export default class CreateUser extends Component {
           value={password}
           onChange={(e) => this.setState({password: e.target.value})} />
         <button onClick={()=> this.handleCreateUser(name, email, password) }>Sign Up</button>
+        { this.state.error ? <p>That email already has an account</p> : ''}
       </section>
     )
   }

@@ -17,11 +17,13 @@ export default class App extends Component {
 
   render() {
     return (
-      <div class='header'>
-        <h1>Not Quite Netflix</h1>
-        <Link to='/login'>
-          {!this.props.userSignInReducer.id ? <button > Sign In </button> : ''}
-        </Link>
+      <div>
+        <div className='header'>
+          <h1>Not Quite Netflix</h1>
+          <Link to='/login'>
+            {!this.props.userSignInReducer.user ? <button className='signIn'> Sign In </button> : ''}
+          </Link>
+        </div>
         {this.props.children}
       </div>
     )

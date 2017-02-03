@@ -11,3 +11,10 @@ export const addMovies = (movies) => {
     movies,
   }
 }
+
+export const favorites = (data) => {
+  return {
+    type: 'ADD_FAVS',
+    data,
+  }
+}

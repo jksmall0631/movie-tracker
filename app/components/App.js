@@ -3,13 +3,6 @@ import { Link } from 'react-router'
 // import Header from './Header';
 
 export default class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      buttonText: 'Sign In',
-      linkTo: '/login'
-    }
-  }
 
   componentWillMount() {
     const {store} = this.props
@@ -23,18 +16,12 @@ export default class App extends Component {
     })
   }
 
-  toggleButton() {
-   this.state.buttonText === 'Sign In' ?
-    this.setState({ buttonText: 'Home', linkTo: '/' }) :
-    this.setState({ buttonText: 'Sign In', linkTo: '/login' })
-  }
-
   render() {
     return (
       <div>
         <h1>Not Quite Netflix</h1>
-        <Link to={this.state.linkTo}>
-          <button onClick={()=> this.toggleButton() }>{this.state.buttonText}</button>
+        <Link to='/login'>
+          {!this.props.userSignInReducer.id ? <button > Sign In </button> : ''}
         </Link>
         {this.props.children}
       </div>

@@ -3,7 +3,7 @@ import { addMovies } from '../actions';
 import App from '../components/App';
 
 const mapStateToProps = (state) => {
-  return {}
+  return state
 }
 
 const mapDispatchToProps = (dispatch) => {

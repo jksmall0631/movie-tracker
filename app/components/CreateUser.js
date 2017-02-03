@@ -23,6 +23,7 @@ export default class CreateUser extends Component {
     .then(response => response.json())
     .then(json => console.log(json));
   }
+
   render(){
     let {name, email, password} = this.state
     return(

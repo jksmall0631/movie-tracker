@@ -8,7 +8,6 @@ export default class MovieIndex extends Component {
   }
 
   addFavorite (userId, movie) {
-    debugger
     const server = ('http://localhost:3000/api/users/favorites/new')
     fetch(server, {
       method:'POST',
@@ -33,19 +32,41 @@ export default class MovieIndex extends Component {
       },
     })
     .then(response => response.json())
-    .then(jsoned => console.log(jsoned))
+    .then(response => this.handleResponse(response))
+    .then(response => console.log(response))
+//    .then(jsoned => console.log(jsoned))
   }
 
-  toggleFavorite (faveData, movie) {
-    debugger
+  handleResponse(response) {
+    if (response.success) {
+      this.getFavorites(userId)
+    }
+//    return response
+  }
+
+  getFavorites (userId) {
+    const server = (`http://localhost:3000/api/users/${userId}/favorites`)
+    fetch(server, {
+      method:'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+    })
+    .then(response => response.json())
+    .then(response => console.log(response))
+//    .then(response => this.props.handleFavorites(response))
+  }
+
+  toggleFavorite (faves, movie) {
     // does the id of this movie exist in our favorites in our store
-    const favorite = faveData.find(fave => movie.id === fave.movie_id)
+    const favorite = faves.find(fave => movie.id === fave.movie_id)
     // if so, make the api call to delete it
-    debugger
     favorite ? this.deleteFavorite(this.props.userSignInReducer.user.data.id, movie) :
     // if not, make the api call to add it
     this.addFavorite(this.props.userSignInReducer.user.data.id, movie)
-    // update the store with the current favorites
+    this.getFavorites(this.props.userSignInReducer.user.data.id)
+    // update the store with the new favorites
   }
 
   render () {

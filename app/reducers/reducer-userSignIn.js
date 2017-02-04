@@ -9,6 +9,7 @@ const userSignInReducer = (state =[], action) => {
     console.log(action)
     return Object.assign({}, state, {fav: action})
   }
+
   return state
 }
 

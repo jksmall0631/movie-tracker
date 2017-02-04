@@ -24,7 +24,7 @@ class MovieIndex extends Component{
 
   render(){
     console.log(this.props.userSignInReducer.fav)
-    let allMovies = this.props.userSignInReducer.fav ? this.props.userSignInReducer.fav.data.data : this.props.movieReducer
+    let allMovies = this.props.movieIndexReducer.favs ? this.props.userSignInReducer.fav.data.data : this.props.movieReducer
     let movie = allMovies.map( movie => {
       return <article className='movie-card' key={ movie.id }>
                 <img src={ 'https://image.tmdb.org/t/p/w342' + movie.poster_path } />

@@ -3,10 +3,7 @@ import { Link } from 'react-router'
 
  // ({this.props.movieReducer, this.props.userSignInReducer}) =>
 
-class MovieIndex extends Component{
-  constructor(){
-    super();
-  }
+export default class MovieIndex extends Component{
 
   addFavorite(userId, movie) {
     const server = ('http://localhost:3000/api/users/favorites/new')
@@ -22,15 +19,29 @@ class MovieIndex extends Component{
     // .then(response => console.log(response))
   }
 
+  deleteFavorite (userId, movie) {
+    const server = 'http://localhost:3000/api/users'
+    fetch(`${server}/${userId}/favorites/${movie.id}`,
+    {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+    })
+    .then(response => response.json())
+    .then(response => console.log(response))
+  }
+
   render(){
-    console.log(this.props.userSignInReducer.fav)
+
     let allMovies = this.props.movieIndexReducer.favs ? this.props.userSignInReducer.fav.data.data : this.props.movieReducer
     let movie = allMovies.map( movie => {
       return <article className='movie-card' key={ movie.id }>
                 <img src={ 'https://image.tmdb.org/t/p/w342' + movie.poster_path } />
                 <h3>{ movie.title }</h3>
                 <p>{ movie.overview }</p>
-                {this.props.userSignInReducer.user ? <button onClick={ () => this.addFavorite(this.props.userSignInReducer.user.data.id, movie) }> Favorite </button> : ''}
+                {this.props.userSignInReducer.user ? <button onClick={ () => this.deleteFavorite(this.props.userSignInReducer.user.data.id, movie) }> Favorite </button> : ''}
              </article>
            })
 
@@ -43,5 +54,3 @@ class MovieIndex extends Component{
       </div>
     )}
   }
-
-export default MovieIndex;

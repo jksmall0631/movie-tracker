@@ -5,6 +5,7 @@ import { Link } from 'react-router'
 const MovieIndex = ({movieReducer, userSignInReducer}) => {
 
   const addFavorite = (userId, movie) => {
+    console.log(userId, movie)
     const server = ('http://localhost:3000/api/users/favorites/new')
     fetch(server, {
       method:'POST',
@@ -18,19 +19,25 @@ const MovieIndex = ({movieReducer, userSignInReducer}) => {
     .then(response => console.log(response))
   }
 
-  let movie = movieReducer.map( movie => {
+  if(userSignInReducer.fav){
+    if(userSignInReducer.fav.data){
+      allMovies = userSignInReducer.fav.data.data
+    }
+  }
+  let allMovies = movieReducer
+  let movie = allMovies.map( movie => {
     return <article className='movie-card' key={ movie.id }>
               <img src={ 'https://image.tmdb.org/t/p/w342' + movie.poster_path } />
               <h3>{ movie.title }</h3>
               <p>{ movie.overview }</p>
-              <button onClick={ () => addFavorite(userSignInReducer.id, movie) }> Favorite </button>
+              {userSignInReducer.user ? <button onClick={ () => addFavorite(userSignInReducer.user.data.id, movie) }> Favorite </button> : ''}
            </article>
          })
 
   return (
     <div className='movie-container'>
       <Link to={'users/' + userSignInReducer.id + '/favorites'} >
-        {userSignInReducer.user ? <button className='favs' onClick={()=> showFavorites(userSignInReducer.id)}> Show Favorites </button> : ''}
+        {userSignInReducer.user ? <button className='favs'> Show Favorites </button> : ''}
       </Link>
     {movie}
     </div>

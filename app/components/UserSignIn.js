@@ -7,7 +7,7 @@ export default class UserSignIn extends Component {
     this.state = {
       username: '',
       password: '',
-      error: '',
+      // error: '',
     }
   }
 
@@ -58,7 +58,7 @@ export default class UserSignIn extends Component {
         <Link to='/'>
           <button onClick={()=> this.handleSignIn(username, password)}> Sign In </button>
         </Link>
-        { error ? <p>Invalid Email/Password</p> : ''}
+        {/* { error ? <p>Invalid Email/Password</p> : ''} */}
       </section>
     )
   }

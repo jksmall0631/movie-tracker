@@ -7,7 +7,7 @@ export default class UserSignIn extends Component {
     this.state = {
       username: '',
       password: '',
-      error: '',
+      // error: '',
     }
   }
 
@@ -25,7 +25,6 @@ export default class UserSignIn extends Component {
   }
 
   handleSignIn (username, password) {
-    console.log(this.props)
     const server = ('http://localhost:3000/api/users')
     fetch(server, {
       method:'POST',
@@ -55,7 +54,9 @@ export default class UserSignIn extends Component {
           placeholder='Password'
           value={password}
           onChange={(e) => this.setState({ password : e.target.value})} />
+        <Link to='/'>
           <button onClick={()=> this.handleSignIn(username, password)}> Sign In </button>
+        </Link>
         { error ? <p>Invalid Email/Password</p> : '' }
       </section>
     )

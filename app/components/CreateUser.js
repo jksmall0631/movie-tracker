@@ -23,7 +23,7 @@ export default class CreateUser extends Component {
     })
     .then(response => response.json())
     .then(response => this.handleError(response))
-    .then(jsoned => console.log(jsoned))
+    // .then(jsoned => console.log(jsoned))
   }
 
   handleError(response) {

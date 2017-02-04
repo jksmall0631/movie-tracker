@@ -1,10 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addMovies } from '../actions';
+import { toggleFavs } from '../actions';
 import MovieIndex from '../components/MovieIndex';
 
 const mapStateToProps = (state) => {
   return state
 }
 
-export default connect(mapStateToProps)(MovieIndex)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    switchToFavs: () => {
+      dispatch(toggleFavs())
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieIndex)

@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
 
+ // ({this.props.movieReducer, this.props.userSignInReducer}) =>
 
-const MovieIndex = ({movieReducer, userSignInReducer}) => {
+class MovieIndex extends Component{
+  constructor(){
+    super();
+  }
 
-  const addFavorite = (userId, movie) => {
+  addFavorite(userId, movie) {
     const server = ('http://localhost:3000/api/users/favorites/new')
     fetch(server, {
       method:'POST',
@@ -15,26 +19,29 @@ const MovieIndex = ({movieReducer, userSignInReducer}) => {
       body: JSON.stringify({user_id: userId, movie_id: movie.id, title: movie.title, poster_path: movie.poster_path, release_date: movie.release_date, vote_average: movie.vote_average, overview: movie.overview})
     })
     .then(response => response.json())
-    .then(response => console.log(response))
+    // .then(response => console.log(response))
   }
 
-  let movie = movieReducer.map( movie => {
-    return <article className='movie-card' key={ movie.id }>
-              <img src={ 'https://image.tmdb.org/t/p/w342' + movie.poster_path } />
-              <h3>{ movie.title }</h3>
-              <p>{ movie.overview }</p>
-              <button onClick={ () => addFavorite(userSignInReducer.id, movie) }> Favorite </button>
-           </article>
-         })
+  render(){
+    console.log(this.props.userSignInReducer.fav)
+    let allMovies = this.props.movieIndexReducer.favs ? this.props.userSignInReducer.fav.data.data : this.props.movieReducer
+    let movie = allMovies.map( movie => {
+      return <article className='movie-card' key={ movie.id }>
+                <img src={ 'https://image.tmdb.org/t/p/w342' + movie.poster_path } />
+                <h3>{ movie.title }</h3>
+                <p>{ movie.overview }</p>
+                {this.props.userSignInReducer.user ? <button onClick={ () => this.addFavorite(this.props.userSignInReducer.user.data.id, movie) }> Favorite </button> : ''}
+             </article>
+           })
 
-  return (
-    <div className='movie-container'>
-      <Link to={'users/' + userSignInReducer.id + '/favorites'} >
-        {userSignInReducer.user ? <button className='favs' onClick={()=> showFavorites(userSignInReducer.id)}> Show Favorites </button> : ''}
-      </Link>
-    {movie}
-    </div>
-  )
-}
+    return (
+      <div className='movie-container'>
+        <Link to={'/favorites'} >
+          {this.props.userSignInReducer.user ? <button className='favs' onClick={() => this.props.switchToFavs()}> Show Favorites </button> : ''}
+        </Link>
+      {movie}
+      </div>
+    )}
+  }
 
 export default MovieIndex;

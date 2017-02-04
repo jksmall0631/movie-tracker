@@ -32,7 +32,6 @@ export default class MovieIndex extends Component {
       },
     })
     .then(response => response.json())
-    .then(response => this.handleResponse(response))
     .then(response => console.log(response))
   }
 
@@ -46,7 +45,7 @@ export default class MovieIndex extends Component {
       },
     })
     .then(response => response.json())
-    .then(response => console.log(response))
+    .then(response => this.props.handleFavorites(response))
   }
 
   toggleFavorite (faves, movie) {

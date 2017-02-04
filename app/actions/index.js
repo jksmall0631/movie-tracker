@@ -18,3 +18,10 @@ export const favorites = (data) => {
     data,
   }
 }
+
+export const toggleFavs = () => {
+  return {
+    type: 'TOGGLE_FAVS',
+    favs: true,
+  }
+}

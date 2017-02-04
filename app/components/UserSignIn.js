@@ -25,7 +25,6 @@ export default class UserSignIn extends Component {
   }
 
   handleSignIn (username, password) {
-    console.log(this.props)
     const server = ('http://localhost:3000/api/users')
     fetch(server, {
       method:'POST',

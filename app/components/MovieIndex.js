@@ -36,6 +36,17 @@ export default class MovieIndex extends Component {
     .then(jsoned => console.log(jsoned))
   }
 
+  toggleFavorite (id, movie) {
+    debugger
+    // does the id of this movie exist in our favorites in our store
+    const favorite = this.props.userSignInReducer.fav.data.data.find(id => movie.id)
+    // if so, make the api call to delete it
+    favorite ? this.deleteFavorite(id, movie) :
+    // if not, make the api call to add it
+    this.addFavorite(id, movie)
+    // update the store with the current favorites
+  }
+
   render () {
     let movie = this.props.movieReducer.map( movie => {
       return <article className='movie-card' key={ movie.id }>
@@ -46,6 +57,8 @@ export default class MovieIndex extends Component {
 , movie) }> Favorite </button>
               <button onClick={ () => this.deleteFavorite(this.props.userSignInReducer.user.data.id
 , movie) }> Unfavorite </button>
+          <button onClick={ () => this.toggleFavorite(this.props.userSignInReducer.user.data.id
+, movie)}>Toggle Favorite</button>
            </article>
     })
     return (

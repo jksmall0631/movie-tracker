@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router'
+import { Link } from 'react-router';
 
  // ({this.props.movieReducer, this.props.userSignInReducer}) =>
 
-class MovieIndex extends Component{
-  constructor(){
-    super();
-  }
+export default class MovieIndex extends Component{
 
   addFavorite(userId, movie) {
     const server = ('http://localhost:3000/api/users/favorites/new')
@@ -19,12 +16,25 @@ class MovieIndex extends Component{
       body: JSON.stringify({user_id: userId, movie_id: movie.id, title: movie.title, poster_path: movie.poster_path, release_date: movie.release_date, vote_average: movie.vote_average, overview: movie.overview})
     })
     .then(response => response.json())
-    // .then(response => console.log(response))
+    .then(response => this.props.newFav(movie))
+  }
+
+  deleteFavorite (userId, movie) {
+    const server = 'http://localhost:3000/api/users'
+    fetch(`${server}/${userId}/favorites/${movie.id}`,
+    {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+    })
+    .then(response => response.json())
+    .then(response => console.log(response))
   }
 
   render(){
-    console.log(this.props.userSignInReducer.fav)
-    let allMovies = this.props.movieIndexReducer.favs ? this.props.userSignInReducer.fav.data.data : this.props.movieReducer
+    let allMovies = this.props.movies || [];
     let movie = allMovies.map( movie => {
       return <article className='movie-card' key={ movie.id }>
                 <img src={ 'https://image.tmdb.org/t/p/w342' + movie.poster_path } />
@@ -36,12 +46,7 @@ class MovieIndex extends Component{
 
     return (
       <div className='movie-container'>
-        <Link to={'/favorites'} >
-          {this.props.userSignInReducer.user ? <button className='favs' onClick={() => this.props.switchToFavs()}> Show Favorites </button> : ''}
-        </Link>
       {movie}
       </div>
     )}
   }
-
-export default MovieIndex;

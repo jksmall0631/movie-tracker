@@ -45,6 +45,9 @@ export default class UserSignIn extends Component {
     let {username, password, error} = this.state
     return(
       <section>
+        <Link to={'/'} >
+          <button className='back'> Back </button>
+        </Link>
         <h2>Already a user? Sign In</h2>
         <input
           placeholder='Username'

@@ -25,3 +25,25 @@ export const toggleFavs = () => {
     favs: true,
   }
 }
+
+export const falseFavs = () => {
+  console.log('bla')
+  return {
+    type: 'TOGGLE_FAVS',
+    favs: false,
+  }
+}
+
+export const newFavorite = (movie) => {
+  return {
+    type: 'NEW_FAV',
+    newFav: movie,
+  }
+}
+
+export const finalFaves = (noDuplicates) => {
+  return {
+    type: 'FINAL_FAVS',
+    finalFaves: noDuplicates,
+  }
+}

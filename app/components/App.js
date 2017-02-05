@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router'
+import { Link } from 'react-router';
 
 export default class App extends Component {
 
@@ -14,6 +14,18 @@ export default class App extends Component {
         this.props.handleAPI(movies)
     })
   }
+
+  // filterFavorites (dbFavs, newFavs) {
+  //   let formatted = newFavs.map((stuff) => {
+  //     return stuff.action.newFav
+  //   })
+  //   let finalFaves = (dbFavs).concat(formatted) || []
+  //   let noDuplicates = _.uniq(finalFaves, (movie) => {
+  //     return movie.title;
+  //   });
+  //   this.props.setFinalFavs(noDuplicates);
+  //   // this.props.switchToFavs();
+  // }
 
   render() {
     return (

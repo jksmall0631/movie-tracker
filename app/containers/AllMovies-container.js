@@ -1,9 +1,17 @@
 import { connect } from 'react-redux';
-import { addMovies } from '../actions';
+import { finalFaves } from '../actions';
 import AllMovies from '../components/AllMovies';
 
 const mapStateToProps = (state) => {
   return state
 }
 
-export default connect(mapStateToProps)(AllMovies)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setFinalFavs: (noDuplicates) => {
+      dispatch(finalFaves(noDuplicates))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AllMovies)

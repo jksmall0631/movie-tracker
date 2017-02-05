@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
  // ({this.props.movieReducer, this.props.userSignInReducer}) =>
 
-export default class MovieIndex extends Component{
+export default class MovieIndex extends Component {
 
   addFavorite(userId, movie) {
     const server = ('http://localhost:3000/api/users/favorites/new')
@@ -34,13 +34,16 @@ export default class MovieIndex extends Component{
   }
 
   render(){
+    let buttonText;
+    window.location.pathname === '/' ? buttonText = 'Favorite' : buttonText = 'Delete'
+
     let allMovies = this.props.movies || [];
     let movie = allMovies.map( movie => {
       return <article className='movie-card' key={ movie.id }>
                 <img src={ 'https://image.tmdb.org/t/p/w342' + movie.poster_path } />
                 <h3>{ movie.title }</h3>
                 <p>{ movie.overview }</p>
-                {this.props.userSignInReducer.user ? <button onClick={ () => this.addFavorite(this.props.userSignInReducer.user.data.id, movie) }> Favorite </button> : ''}
+                {this.props.userSignInReducer.user ? <button onClick={ () => this.addFavorite(this.props.userSignInReducer.user.data.id, movie) }> {buttonText} </button> : ''}
              </article>
            })
 

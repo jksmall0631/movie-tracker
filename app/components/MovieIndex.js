@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import filterFavorites from './filterFavorites';
 
  // ({this.props.movieReducer, this.props.userSignInReducer}) =>
 
@@ -19,7 +20,7 @@ export default class MovieIndex extends Component{
     .then(response => this.props.newFav(movie))
   }
 
-  deleteFavorite (userId, movie) {
+  deleteFavorite (userId, movie, db, newFavs) {
     const server = 'http://localhost:3000/api/users'
     fetch(`${server}/${userId}/favorites/${movie.id}`,
     {
@@ -30,7 +31,10 @@ export default class MovieIndex extends Component{
       },
     })
     .then(response => response.json())
-    .then(response => this.props.deleteFav(movie))
+    .then(response => {
+      this.props.deleteFav(movie)
+      filterFavorites(db, newFavs)
+    })
   }
 
   render(){
@@ -41,7 +45,7 @@ export default class MovieIndex extends Component{
                 <h3>{ movie.title }</h3>
                 <p>{ movie.overview }</p>
                 {this.props.userSignInReducer.user && window.location.pathname === '/' ? <button onClick={ () => this.addFavorite(this.props.userSignInReducer.user.data.id, movie) }> Favorite </button> : ''}
-                {this.props.userSignInReducer.user && window.location.pathname === '/favorites' ? <button onClick={ () => this.deleteFavorite(this.props.userSignInReducer.user.data.id, movie) }> Remove </button> : ''}
+                {this.props.userSignInReducer.user && window.location.pathname === '/favorites' ? <button onClick={ () => this.deleteFavorite(this.props.userSignInReducer.user.data.id, movie, this.props.userSignInReducer.fav.data.data, this.props.movieIndexReducer) }> Remove </button> : ''}
              </article>
            })
 

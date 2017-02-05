@@ -6,8 +6,6 @@ const movieIndexReducer = (state = [], action) => {
       })
       return Object.assign([ ...finalState, {add: action.newFav}]);
     case 'DELETE_FAV':
-      console.log(action.delFav)
-      console.log(state)
       let deleteState = state.map((thing) => {
         return thing
       })

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { toggleFavs, newFavorite } from '../actions';
+import { newFavorite } from '../actions';
 import MovieIndex from '../components/MovieIndex';
 
 const mapStateToProps = (state) => {
@@ -9,9 +9,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    switchToFavs: () => {
-      dispatch(toggleFavs())
-    },
     newFav: (movie) => {
       dispatch(newFavorite(movie))
     }

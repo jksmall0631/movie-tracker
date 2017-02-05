@@ -4,12 +4,6 @@ import { Link } from 'react-router';
  // ({this.props.movieReducer, this.props.userSignInReducer}) =>
 
 export default class MovieIndex extends Component{
-  constructor(){
-    super();
-    this.state = {
-      favs: [],
-    }
-  }
 
   addFavorite(userId, movie) {
     const server = ('http://localhost:3000/api/users/favorites/new')

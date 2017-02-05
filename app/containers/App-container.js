@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addMovies, finalFaves } from '../actions';
+import { addMovies, finalFaves, toggleFavs } from '../actions';
 import App from '../components/App';
 
 const mapStateToProps = (state) => {
@@ -13,7 +13,10 @@ const mapDispatchToProps = (dispatch) => {
     },
     setFinalFavs: (noDuplicates) => {
       dispatch(finalFaves(noDuplicates))
-    }
+    },
+    switchToFavs: () => {
+      dispatch(toggleFavs())
+    },
   }
 }
 

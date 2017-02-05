@@ -4,6 +4,8 @@ const movieReducer = (state = [], action) => {
       return Object.assign({}, state, {movies: action.movies})
     case 'FINAL_FAVS':
       return Object.assign({}, state, {final: action})
+    case 'TOGGLE_FAVS':
+      return Object.assign({}, state, {toggle: action})
   }
   return state;
 }

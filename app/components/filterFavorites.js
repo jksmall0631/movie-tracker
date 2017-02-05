@@ -2,25 +2,29 @@ import _ from 'underscore';
 
 
 const filterFavorites = (dbFavs, newFavs) => {
-  let added = newFavs.map((stuff) => {
+  let addFil = newFavs.filter((stuff) => {
     return stuff.add
   })
-  let deleted = newFavs.map((stuff) => {
+  let delFil = newFavs.filter((stuff) => {
+    return stuff.del
+  })
+  let added = addFil.map((stuff) => {
+    return stuff.add
+  })
+  let deleted = delFil.map((stuff) => {
     return stuff.del
   })
   let finalFaves = (dbFavs).concat(added) || []
   let noDuplicates = _.uniq(finalFaves, (movie) => {
     return movie.title;
   });
+  let finalFinalFaves;
   deleted.forEach((item) => {
-    let finalFinalFaves = noDuplicates.filter((fav) => {
-      let array = [];
-      if(fav.title !== item.title){
-        array.push(fav);
-      }
+    finalFinalFaves = noDuplicates.filter((fav) => {
+      return fav.title !== item.title
     })
-    console.log(finalFinalFaves)
   })
+  console.log(finalFinalFaves);
   return noDuplicates;
   // this.props.setFinalFavs(noDuplicates);
   // this.props.switchToFavs();

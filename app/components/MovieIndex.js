@@ -30,7 +30,7 @@ export default class MovieIndex extends Component{
       },
     })
     .then(response => response.json())
-    .then(response => console.log(response))
+    .then(response => this.props.deleteFav(movie))
   }
 
   render(){

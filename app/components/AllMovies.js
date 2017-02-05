@@ -6,10 +6,13 @@ import MovieIndex from '../containers/MovieIndex-container';
 export default class AllMovies extends Component{
 
   filterFavorites (dbFavs, newFavs) {
-    let formatted = newFavs.map((stuff) => {
-      return stuff.action.newFav
+    let added = newFavs.map((stuff) => {
+      return stuff.add
     })
-    let finalFaves = (dbFavs).concat(formatted) || []
+    let deleted = newFavs.map((stuff) => {
+      return stuff.del
+    })
+    let finalFaves = (dbFavs).concat(added) || []
     let noDuplicates = _.uniq(finalFaves, (movie) => {
       return movie.title;
     });

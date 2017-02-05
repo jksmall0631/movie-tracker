@@ -25,3 +25,10 @@ export const toggleFavs = () => {
     favs: true,
   }
 }
+
+export const newFavorite = (movie) => {
+  return {
+    type: 'NEW_FAV',
+    newFav: movie,
+  }
+}

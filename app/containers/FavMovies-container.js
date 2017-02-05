@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addMovies } from '../actions';
+import { addMovies, finalFaves } from '../actions';
 import FavMovies from '../components/FavMovies';
 
 const mapStateToProps = (state) => {

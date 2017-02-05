@@ -26,6 +26,14 @@ export const toggleFavs = () => {
   }
 }
 
+export const falseFavs = () => {
+  console.log('bla')
+  return {
+    type: 'TOGGLE_FAVS',
+    favs: false,
+  }
+}
+
 export const newFavorite = (movie) => {
   return {
     type: 'NEW_FAV',

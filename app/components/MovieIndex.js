@@ -17,6 +17,7 @@ export default class MovieIndex extends Component {
     })
     .then(response => response.json())
     .then(response => this.props.newFav(movie))
+    .then(response => console.log(response))
   }
 
   deleteFavorite (userId, movie) {
@@ -34,6 +35,7 @@ export default class MovieIndex extends Component {
   }
 
   render(){
+    //just a variable to set the text of the button
     let buttonText;
     window.location.pathname === '/' ? buttonText = 'Favorite' : buttonText = 'Delete'
 
@@ -43,7 +45,10 @@ export default class MovieIndex extends Component {
                 <img src={ 'https://image.tmdb.org/t/p/w342' + movie.poster_path } />
                 <h3>{ movie.title }</h3>
                 <p>{ movie.overview }</p>
-                {this.props.userSignInReducer.user ? <button onClick={ () => this.addFavorite(this.props.userSignInReducer.user.data.id, movie) }> {buttonText} </button> : ''}
+                //this is a set up as a ternary within a ternary which we will super get yelled at for
+                {this.props.userSignInReducer.user ?
+                  <button onClick={ () => window.location.pathname === '/' ? this.addFavorite(this.props.userSignInReducer.user.data.id, movie)
+                  : this.deleteFavorite(this.props.userSignInReducer.user.data.id, movie)}> {buttonText} </button> : ''}
              </article>
            })
 

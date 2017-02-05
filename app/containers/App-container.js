@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addMovies } from '../actions';
+import { addMovies, finalFaves } from '../actions';
 import App from '../components/App';
 
 const mapStateToProps = (state) => {
@@ -10,6 +10,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     handleAPI: (movies) => {
       dispatch(addMovies(movies))
+    },
+    setFinalFavs: (noDuplicates) => {
+      dispatch(finalFaves(noDuplicates))
     }
   }
 }

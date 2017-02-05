@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import _ from 'underscore';
 
  // ({this.props.movieReducer, this.props.userSignInReducer}) =>
 
@@ -40,21 +39,8 @@ export default class MovieIndex extends Component{
     .then(response => console.log(response))
   }
 
-  filterFavorites (dbFavs, newFavs) {
-    let formatted = newFavs.map((stuff) => {
-      return stuff.action.newFav
-    })
-    let finalFaves = (dbFavs).concat(formatted) || []
-    let noDuplicates = _.uniq(finalFaves, (movie) => {
-      return movie.title;
-    });
-    this.setState({favs: noDuplicates})
-    this.props.switchToFavs();
-  }
-
   render(){
-    console.log(this)
-    let allMovies = this.props.movieIndexReducer.toggle ? this.state.favs : this.props.movieReducer
+    let allMovies = this.props.movies || [];
     let movie = allMovies.map( movie => {
       return <article className='movie-card' key={ movie.id }>
                 <img src={ 'https://image.tmdb.org/t/p/w342' + movie.poster_path } />
@@ -66,9 +52,6 @@ export default class MovieIndex extends Component{
 
     return (
       <div className='movie-container'>
-        <Link to={'/favorites'} >
-          {this.props.userSignInReducer.user ? <button className='favs' onClick={() => this.filterFavorites(this.props.userSignInReducer.fav.data.data, this.props.movieIndexReducer)}> Show Favorites </button> : ''}
-        </Link>
       {movie}
       </div>
     )}

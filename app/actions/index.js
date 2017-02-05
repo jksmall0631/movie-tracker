@@ -32,3 +32,10 @@ export const newFavorite = (movie) => {
     newFav: movie,
   }
 }
+
+export const finalFaves = (noDuplicates) => {
+  return {
+    type: 'FINAL_FAVS',
+    finalFaves: noDuplicates,
+  }
+}

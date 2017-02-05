@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router'
+import { Link } from 'react-router';
+import _ from 'underscore';
 
 export default class App extends Component {
 
@@ -15,6 +16,18 @@ export default class App extends Component {
     })
   }
 
+  filterFavorites (dbFavs, newFavs) {
+    let formatted = newFavs.map((stuff) => {
+      return stuff.action.newFav
+    })
+    let finalFaves = (dbFavs).concat(formatted) || []
+    let noDuplicates = _.uniq(finalFaves, (movie) => {
+      return movie.title;
+    });
+    this.props.setFinalFavs(noDuplicates);
+    // this.props.switchToFavs();
+  }
+
   render() {
     return (
       <div>
@@ -22,6 +35,9 @@ export default class App extends Component {
           <h1>Not Quite Netflix</h1>
           <Link to='/login'>
             {!this.props.userSignInReducer.user ? <button className='signIn'> Sign In </button> : ''}
+          </Link>
+          <Link to={'/favorites'} >
+            {this.props.userSignInReducer.user ? <button className='favs' onClick={() => this.filterFavorites(this.props.userSignInReducer.fav.data.data, this.props.movieIndexReducer)}> Show Favorites </button> : ''}
           </Link>
         </div>
         {this.props.children}

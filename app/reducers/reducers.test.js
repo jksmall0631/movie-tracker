@@ -52,7 +52,6 @@ describe('userSignInReducer', () => {
           overview: "Rachel Watson, devastated by her recent divorce, spends her daily commute fantasizing about the seemingly perfect couple who live in a house that her train passes every day, until one morning she sees something shocking happen there and becomes entangled in the mystery that unfolds."
       }
     }
-
     const testState = userSignInReducer(defaultState, addFavAction)
     const newFaveTitle = Object.values(testState.fav)[1].title
     expect(defaultState).to.not.equal.true
@@ -129,7 +128,6 @@ describe('allMoviesReducer', () => {
       }
     ]
     }
-
     const testState = allMoviesReducer(defaultState, favAction)
     const faveArray = Object.values(testState.finalFaves)
     expect(defaultState).to.not.equal.true

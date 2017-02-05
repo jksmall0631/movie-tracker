@@ -1,10 +1,32 @@
-export const fakeState = {
+export const fakeStore = {
   user: {
     id: 2,
     name: "steph",
     password: "password",
     email: "fake@fake.com"
     },
+  fav: [
+    {
+    id: 71,
+    movie_id: 207932,
+    user_id: 77,
+    title: "Inferno",
+    poster_path: "/oFOG2yIRcluKfTtYbzz71Vj9bgz.jpg",
+    release_date: "2016-10-13",
+    vote_average: "5.5",
+    overview: "After waking up in a hospital with amnesia, professor Robert Langdon and a doctor must race against time to foil a deadly global plot."
+    },
+    {
+    id: 72,
+    movie_id: 346672,
+    user_id: 77,
+    title: "Underworld: Blood Wars",
+    poster_path: "/nHXiMnWUAUba2LZ0dFkNDVdvJ1o.jpg",
+    release_date: "2016-12-01",
+    vote_average: "4.2",
+    overview: "Vampire death dealer Selene fends off brutal attacks from both the Lycan clan and the Vampire faction that betrayed her. With her only allies, David and his father Thomas, she must stop the eternal war between Lycans and Vampires, even if it means she has to make the ultimate sacrifice."
+    }
+  ]
   movies: [
     { id: 60,
     movie_id: 328111,
@@ -77,6 +99,48 @@ export const fakeState = {
     }
   ],
   fav: [
+    {
+    id: 69,
+    movie_id: 330459,
+    user_id: 77,
+    title: "Rogue One: A Star Wars Story",
+    poster_path: "/qjiskwlV1qQzRCjpV0cL9pEMF9a.jpg",
+    release_date: "2016-12-14",
+    vote_average: "7.2",
+    overview: "A rogue band of resistance fighters unite for a mission to steal the Death Star plans and bring a new hope to the galaxy."
+    },
+    {
+    id: 70,
+    movie_id: 346685,
+    user_id: 77,
+    title: "The Girl on the Train",
+    poster_path: "/n8WNMt7stqHUZEE7bEtzK4FwrWe.jpg",
+    release_date: "2016-10-05",
+    vote_average: "6",
+    overview: "Rachel Watson, devastated by her recent divorce, spends her daily commute fantasizing about the seemingly perfect couple who live in a house that her train passes every day, until one morning she sees something shocking happen there and becomes entangled in the mystery that unfolds."
+    },
+    {
+    id: 71,
+    movie_id: 207932,
+    user_id: 77,
+    title: "Inferno",
+    poster_path: "/oFOG2yIRcluKfTtYbzz71Vj9bgz.jpg",
+    release_date: "2016-10-13",
+    vote_average: "5.5",
+    overview: "After waking up in a hospital with amnesia, professor Robert Langdon and a doctor must race against time to foil a deadly global plot."
+    },
+    {
+    id: 72,
+    movie_id: 346672,
+    user_id: 77,
+    title: "Underworld: Blood Wars",
+    poster_path: "/nHXiMnWUAUba2LZ0dFkNDVdvJ1o.jpg",
+    release_date: "2016-12-01",
+    vote_average: "4.2",
+    overview: "Vampire death dealer Selene fends off brutal attacks from both the Lycan clan and the Vampire faction that betrayed her. With her only allies, David and his father Thomas, she must stop the eternal war between Lycans and Vampires, even if it means she has to make the ultimate sacrifice."
+    }
+  ]
+  finalFaves: [
     {
     id: 69,
     movie_id: 330459,

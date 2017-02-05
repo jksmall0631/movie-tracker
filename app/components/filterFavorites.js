@@ -12,6 +12,15 @@ const filterFavorites = (dbFavs, newFavs) => {
   let noDuplicates = _.uniq(finalFaves, (movie) => {
     return movie.title;
   });
+  deleted.forEach((item) => {
+    let finalFinalFaves = noDuplicates.filter((fav) => {
+      let array = [];
+      if(fav.title !== item.title){
+        array.push(fav);
+      }
+    })
+    console.log(finalFinalFaves)
+  })
   return noDuplicates;
   // this.props.setFinalFavs(noDuplicates);
   // this.props.switchToFavs();

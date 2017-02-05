@@ -40,7 +40,8 @@ export default class MovieIndex extends Component{
                 <img src={ 'https://image.tmdb.org/t/p/w342' + movie.poster_path } />
                 <h3>{ movie.title }</h3>
                 <p>{ movie.overview }</p>
-                {this.props.userSignInReducer.user ? <button onClick={ () => this.addFavorite(this.props.userSignInReducer.user.data.id, movie) }> Favorite </button> : ''}
+                {this.props.userSignInReducer.user && window.location.pathname === '/' ? <button onClick={ () => this.addFavorite(this.props.userSignInReducer.user.data.id, movie) }> Favorite </button> : ''}
+                {this.props.userSignInReducer.user && window.location.pathname === '/favorites' ? <button onClick={ () => this.deleteFavorite(this.props.userSignInReducer.user.data.id, movie) }> Remove </button> : ''}
              </article>
            })
 

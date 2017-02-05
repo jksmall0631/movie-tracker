@@ -11,12 +11,6 @@ const mapDispatchToProps = (dispatch) => {
     handleAPI: (movies) => {
       dispatch(addMovies(movies))
     },
-    switchToFavs: () => {
-      dispatch(toggleFavs())
-    },
-    back: () => {
-      dispatch(falseFavs())
-    }
   }
 }
 

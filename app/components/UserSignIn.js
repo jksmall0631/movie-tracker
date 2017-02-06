@@ -38,7 +38,7 @@ export default class UserSignIn extends Component {
     .then(data => {
         this.props.handleUserAPI(data.data)
         this.showFavorites(data.data.id) })
-    .catch(e => this.setState({error: e}));
+    .catch(e => alert('You have entered an incorrect username or password.'));
   }
 
   render(){
@@ -55,6 +55,7 @@ export default class UserSignIn extends Component {
           onChange={(e) => this.setState({ username : e.target.value})} />
         <input
           placeholder='Password'
+          type='password'
           value={password}
           onChange={(e) => this.setState({ password : e.target.value})} />
         <Link to='/'>

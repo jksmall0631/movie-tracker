@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router';
 
 
 export default class CreateUser extends Component {
@@ -8,7 +9,7 @@ export default class CreateUser extends Component {
       name: '',
       email: '',
       password: '',
-      error: '',
+      // error: '',
     }
   }
   handleCreateUser (name, email, password) {
@@ -23,15 +24,17 @@ export default class CreateUser extends Component {
     })
     .then(response => response.json())
     .then(response => this.handleError(response))
+    .catch(e => alert('That email account has already has an account.'));
+
     // .then(jsoned => console.log(jsoned))
   }
 
-  handleError(response) {
-    if (!response.success) {
-      this.setState({ error: response })
-    }
-    return response
-  }
+  // handleError(response) {
+  //   if (!response.success) {
+  //     this.setState({ error: response })
+  //   }
+  //   return response
+  // }
 
   render(){
     let {name, email, password} = this.state
@@ -48,10 +51,13 @@ export default class CreateUser extends Component {
           onChange={(e) => this.setState({email: e.target.value})} />
         <input
           placeholder='Password'
+          type='password'
           value={password}
           onChange={(e) => this.setState({password: e.target.value})} />
-        <button onClick={()=> this.handleCreateUser(name, email, password) }>Sign Up</button>
-        { this.state.error ? <p>That email already has an account</p> : ''}
+        <Link to='/'>
+          <button onClick={()=> this.handleCreateUser(name, email, password) }>Sign Up</button>
+        </Link>
+        {/* { this.state.error ? <p>That email already has an account</p> : ''} */}
       </section>
     )
   }

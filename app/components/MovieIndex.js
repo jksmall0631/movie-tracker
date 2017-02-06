@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import filterFavorites from './filterFavorites';
 
- // ({this.props.movieReducer, this.props.userSignInReducer}) =>
-
 export default class MovieIndex extends Component{
 
   addFavorite(userId, movie, db, newFavs) {
@@ -56,8 +54,6 @@ export default class MovieIndex extends Component{
                 {this.props.userSignInReducer.user && window.location.pathname === '/favorites' ? <button onClick={ () => this.deleteFavorite(this.props.userSignInReducer.user.data.id, movie, this.props.userSignInReducer.fav.data.data, this.props.movieIndexReducer)} className='user-btn'> Remove  </button> : ''}
              </article>
            })
-
-
 
     return (
       <div className='movie-container'>

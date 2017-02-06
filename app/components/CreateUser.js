@@ -9,7 +9,6 @@ export default class CreateUser extends Component {
       name: '',
       email: '',
       password: '',
-      error: '',
     }
   }
   handleCreateUser (name, email, password) {

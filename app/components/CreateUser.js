@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
 
-
 export default class CreateUser extends Component {
   constructor(){
     super();
@@ -11,7 +10,8 @@ export default class CreateUser extends Component {
       password: '',
     }
   }
-  handleCreateUser (name, email, password) {
+
+  handleCreateUser(name, email, password){
     const server = ('http://localhost:3000/api/users/new')
     fetch(server, {
       method:'POST',
@@ -25,7 +25,7 @@ export default class CreateUser extends Component {
     .then(response => this.handleError(response))
   }
 
-  handleError(response) {
+  handleError(response){
     if (response.error) {
       alert('That email account already has an account')
     }

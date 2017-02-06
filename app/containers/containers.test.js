@@ -49,3 +49,5 @@ describe('mapDispatchToProps', () => {
 
   })
 })
+
+allMoviesReducer = { finalFaves: {stubMovie}}

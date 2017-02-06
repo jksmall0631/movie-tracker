@@ -1,7 +1,11 @@
+body {
+  background-color: #f6f6f6;
+}
+
 #main h1 {
   color: red;
   font-size: 48px;
-  font-family: 'Fascinate', cursive;
+  font-family: 'Limelight', cursive;
   padding: 20px;
 }
 
@@ -26,12 +30,63 @@
   box-shadow: 5px 5px 3px #888888;
 }
 
-.movie-card img:hover {
+/*.movie-card img:hover {
   opacity: 0.5;
+}*/
+
+.movie-title {
+  margin-bottom: 5px;
+  font-family: 'Merriweather';
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.movie-overview {
+  padding: 5px;
+  font-family: 'Merriweather';
+  font-size: 12px;
+  line-height: 115%;
 }
 
 .signIn, .favs{
   position: absolute;
   top: 30px;
   right: 40px;
+}
+
+.star {
+  margin-bottom: 5px;
+  font-size: 48px;
+}
+
+.star:hover {
+  color: #e5c100;
+}
+
+input {
+  width: 250px;
+  font-size: 18px;
+}
+.user-btn, .back-btn {
+  margin: 10px;
+  width: 100px;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  background-color: black;
+  color: red;
+}
+
+.signIn, .favs {
+  width: 150px;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  background-color: white;
+  color: red;
+}
+
+.sign-up-text {
+  margin-top: 20px;
+  font-size: 24px;
 }

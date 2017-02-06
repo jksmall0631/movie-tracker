@@ -9,22 +9,20 @@ import {stubMovie} from './testing-stubs/stub-movie';
 
 const allMoviesReducer = {finalFaves: {stubMovie}}
 
-describe('FavMovies', function () {
-
+describe('FavMovies', () => {
   it('renders as a section', () => {
     const wrapper = shallow(<FavMovies allMoviesReducer={allMoviesReducer} />)
     expect(wrapper.find('button')).to.have.length(1)
     assert.equal(wrapper.type(), 'div')
   });
 
-  it('renders one link component', ()=> {
+  it('renders one link component', () => {
     const wrapper = shallow(<FavMovies allMoviesReducer={allMoviesReducer} />)
     expect(wrapper.find('Link')).to.have.length(1)
   })
 
-  it('renders one button component', ()=> {
+  it('renders one button component', () => {
     const wrapper = shallow(<FavMovies allMoviesReducer={allMoviesReducer} />)
     expect(wrapper.find('button')).to.have.length(1)
   })
-
 });

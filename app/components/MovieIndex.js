@@ -23,7 +23,7 @@ export default class MovieIndex extends Component{
     })
   }
 
-  deleteFavorite (userId, movie, db, delFavs) {
+  deleteFavorite(userId, movie, db, delFavs){
     const server = 'http://localhost:3000/api/users'
     fetch(`${server}/${userId}/favorites/${movie.id}`,
     {

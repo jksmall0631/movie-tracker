@@ -11,7 +11,6 @@ const Login = () => {
       <CreateUser />
     </section>
   )
-
 }
 
 export default Login;

@@ -21,7 +21,7 @@ describe('userSignInReducer', () => {
     expect(defaultState).to.exist
   })
 
-  it('should return state with a new user upon user login', ()=>{
+  it('should return state with a new user property upon user login', ()=>{
     const defaultState = userSignInReducer(undefined, {})
     const loginAction = {
       type: 'USER_LOGIN', action: {
@@ -33,12 +33,12 @@ describe('userSignInReducer', () => {
     }
     const testState = userSignInReducer(defaultState, loginAction)
     const newUserName = Object.values(testState.user)[1].name
-    expect(defaultState).to.not.equal.true
-    expect(testState).to.equal.true
+    expect(defaultState.user).to.not.exist
+    expect(testState.user).to.exist
     expect(newUserName).to.equal('Taylor')
   })
 
-  it('should return state with a new fav upon adding a fav', ()=>{
+  it('should return state with a new fav prop upon adding a fav', ()=>{
     const defaultState = userSignInReducer(undefined, {})
     const addFavAction = {
       type: 'ADD_FAVS', action: {
@@ -54,8 +54,8 @@ describe('userSignInReducer', () => {
     }
     const testState = userSignInReducer(defaultState, addFavAction)
     const newFaveTitle = Object.values(testState.fav)[1].title
-    expect(defaultState).to.not.equal.true
-    expect(testState).to.equal.true
+    expect(defaultState.fav).to.not.exist
+    expect(testState.fav).to.exist
     expect(newFaveTitle).to.equal('The Girl on the Train')
   })
 })
@@ -71,7 +71,7 @@ describe('movieReducer', () => {
     expect(defaultState).to.exist
   })
 
-  it('should return state with a new movie upon adding a movie', ()=>{
+  it('should return state with a new movie property upon adding a movie', ()=>{
     const defaultState = movieReducer(undefined, {})
     const addMovieAction = {
       type: 'ADD_MOVIES', movies: {
@@ -87,9 +87,30 @@ describe('movieReducer', () => {
     }
     const testState = movieReducer(defaultState, addMovieAction)
     const newMovieTitle = Object.values(testState.movies)[3]
-    expect(defaultState).to.not.equal.true
-    expect(testState).to.equal.true
+    expect(defaultState.movies).to.not.exist
+    expect(testState.movies).to.exist
     expect(newMovieTitle).to.equal('The Girl on the Train')
+  })
+
+  it('should return a new movie state that assigns a toggle property upon TOGGLE_FAVS', ()=>{
+    const defaultState = movieReducer(undefined, {})
+    const toggleFavAction = {
+      type: 'TOGGLE_FAVS', movies: {
+          id: 70,
+          movie_id: 346685,
+          user_id: 77,
+          title: "The Girl on the Train",
+          poster_path: "/n8WNMt7stqHUZEE7bEtzK4FwrWe.jpg",
+          release_date: "2016-10-05",
+          vote_average: "6",
+          overview: "Rachel Watson, devastated by her recent divorce, spends her daily commute fantasizing about the seemingly perfect couple who live in a house that her train passes every day, until one morning she sees something shocking happen there and becomes entangled in the mystery that unfolds."
+      }
+    }
+    const testState = movieReducer(defaultState, toggleFavAction)
+    const toggleMovieTitle = testState.toggle.movies.title
+    expect(defaultState.toggle).to.not.exist
+    expect(testState.toggle).to.exist
+    expect(toggleMovieTitle).to.equal('The Girl on the Train')
   })
 })
 
@@ -130,8 +151,8 @@ describe('allMoviesReducer', () => {
     }
     const testState = allMoviesReducer(defaultState, favAction)
     const faveArray = Object.values(testState.finalFaves)
-    expect(defaultState).to.not.equal.true
-    expect(testState).to.equal.true
+    expect(defaultState.finalFaves).to.not.exist
+    expect(testState.finalFaves).to.exist
     expect(faveArray).to.have.length(2)
   })
 })
@@ -147,7 +168,7 @@ describe('movieIndexReducer', () => {
     expect(defaultState).to.exist
   })
 
-  it('should return an array with a new movie object upon adding a new favorite', () => {
+  it('should return a new movie object upon adding a new favorite', () => {
     const defaultState = movieIndexReducer(undefined, {})
     const newFavAction = {
       type: 'NEW_FAV', newFav: {
@@ -161,13 +182,30 @@ describe('movieIndexReducer', () => {
         overview: "Rachel Watson, devastated by her recent divorce, spends her daily commute fantasizing about the seemingly perfect couple who live in a house that her train passes every day, until one morning she sees something shocking happen there and becomes entangled in the mystery that unfolds."
       }
     }
-
     const testState = movieIndexReducer(defaultState, newFavAction)
-    const faveArray = testState
-    expect(defaultState).to.not.equal.true
-    expect(testState).to.equal.true
-    expect(faveArray).to.have.length(1)
+    expect(defaultState.new).to.not.exist
+    expect(testState.new).to.exist
   })
+
+  it('should return a new movie object upon adding a delete favorite', () => {
+    const defaultState = movieIndexReducer(undefined, {})
+    const deleteFavAction = {
+      type: 'DELETE_FAV', delFav: {
+        id: 70,
+        movie_id: 346685,
+        user_id: 77,
+        title: "The Girl on the Train",
+        poster_path: "/n8WNMt7stqHUZEE7bEtzK4FwrWe.jpg",
+        release_date: "2016-10-05",
+        vote_average: "6",
+        overview: "Rachel Watson, devastated by her recent divorce, spends her daily commute fantasizing about the seemingly perfect couple who live in a house that her train passes every day, until one morning she sees something shocking happen there and becomes entangled in the mystery that unfolds."
+      }
+    }
+    const testState = movieIndexReducer(defaultState, deleteFavAction)
+    expect(defaultState.del).to.not.exist
+    expect(testState.del).to.exist
+  })
+
 })
 
 describe('allReducers', () => {

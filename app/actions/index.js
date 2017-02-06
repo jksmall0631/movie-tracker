@@ -27,7 +27,6 @@ export const toggleFavs = () => {
 }
 
 export const falseFavs = () => {
-  console.log('bla')
   return {
     type: 'TOGGLE_FAVS',
     favs: false,

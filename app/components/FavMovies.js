@@ -8,7 +8,7 @@ export default class FavMovies extends Component{
     return(
       <div>
         <Link to={'/'} >
-          <button className='back'> Back </button>
+          <button className='back-btn'> Back </button>
         </Link>
         <MovieIndex movies={this.props.allMoviesReducer.finalFaves}/>
       </div>

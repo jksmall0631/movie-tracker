@@ -38,9 +38,9 @@ export default class MovieIndex extends Component{
     let movie = allMovies.map( movie => {
       return <article className='movie-card' key={ movie.id }>
                 <img src={ 'https://image.tmdb.org/t/p/w342' + movie.poster_path } />
-                <h3>{ movie.title }</h3>
-                <p>{ movie.overview }</p>
-                {this.props.userSignInReducer.user ? <button onClick={ () => this.addFavorite(this.props.userSignInReducer.user.data.id, movie) }> Favorite </button> : ''}
+                {this.props.userSignInReducer.user ? <p onClick={ () => this.addFavorite(this.props.userSignInReducer.user.data.id, movie) } className='star'> &#9733; </p> : ''}
+                <h3 className='movie-title'>{ movie.title }</h3>
+                <p className='movie-overview'>{ movie.overview }</p>
              </article>
            })
 

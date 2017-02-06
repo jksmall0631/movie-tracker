@@ -49,7 +49,7 @@ export default class UserSignIn extends Component {
         </Link>
         <h2 className='sign-up-text'>Already a user? Sign In</h2>
         <input
-          placeholder='Username'
+          placeholder='Email'
           value={username}
           onChange={(e) => this.setState({ username : e.target.value})} />
         <input

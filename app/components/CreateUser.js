@@ -23,8 +23,7 @@ export default class CreateUser extends Component {
       body: JSON.stringify({name: name, email: email, password: password})
     })
     .then(response => response.json())
-    .then(response => {this.setState({message: 'create user successful', name: '', email: '', password: ''})})
-    .catch(response => this.handleError(response));
+    .then(response => {!response.error ? this.setState({message: 'create user successful', name: '', email: '', password: ''}) : this.handleError(response)})
   }
 
   handleError(response) {
@@ -32,6 +31,12 @@ export default class CreateUser extends Component {
       this.setState({message: 'That email account already has an account'})
     }
     return response
+  }
+
+  checkEmail(email){
+    var re = /(\w+)\@(\w+)\.[a-zA-Z]/g;
+    var test = re.test(email);
+    return test
   }
 
   render(){

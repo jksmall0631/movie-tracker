@@ -106,6 +106,10 @@ input {
   font-size: 24px;
 }
 
+.message {
+  display: inline-block;
+}
+
 button:hover {
   color: red;
 }

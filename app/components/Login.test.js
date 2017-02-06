@@ -19,6 +19,7 @@ describe('Login', function () {
 
   it.skip('renders a UserSignIn component', ()=> {
     const wrapper = shallow(<Login />)
+    console.log(wrapper.debug());
     expect(wrapper.find('UserSignIn')).to.have.length(1)
   })
 });

@@ -3,6 +3,7 @@ import {Link} from 'react-router';
 import { Provider } from 'react-redux'
 import { expect, assert } from 'chai';
 import { shallow, mount } from 'enzyme'
+import sinon from 'sinon'
 
 import { defaultFakeStore } from '../components/testing-stubs/store-stub'
 import { fakeStore } from '../components/testing-stubs/store-stub'
@@ -41,9 +42,8 @@ describe('App', () => {
   });
 
   it('button should have passed in prop for className', () => {
-const wrapper = shallow(<button className='signIn' />)
-expect(wrapper.props().className).to.equal('signIn');
-})
-
+    const wrapper = shallow(<button className='signIn' />)
+    expect(wrapper.props().className).to.equal('signIn');
+  })
 
 });

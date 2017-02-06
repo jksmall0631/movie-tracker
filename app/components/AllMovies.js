@@ -29,6 +29,7 @@ export default class AllMovies extends Component{
 
 
   render(){
+    console.log(this.state)
     return(
       <div>
         <Link to={'/favorites'} >

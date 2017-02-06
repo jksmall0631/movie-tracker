@@ -46,9 +46,9 @@ export default class UserSignIn extends Component {
     return(
       <section>
         <Link to={'/'} >
-          <button className='back'> Back </button>
+          <button className='back' className='user-btn'> Back </button>
         </Link>
-        <h2>Already a user? Sign In</h2>
+        <h2 className='sign-up-text'>Already a user? Sign In</h2>
         <input
           placeholder='Username'
           value={username}
@@ -59,7 +59,7 @@ export default class UserSignIn extends Component {
           value={password}
           onChange={(e) => this.setState({ password : e.target.value})} />
         <Link to='/'>
-          <button onClick={()=> this.handleSignIn(username, password)}> Sign In </button>
+          <button onClick={()=> this.handleSignIn(username, password)} className='user-btn'> Sign In </button>
         </Link>
         { error ? <p>Invalid Email/Password</p> : '' }
       </section>

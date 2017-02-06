@@ -40,7 +40,7 @@ export default class CreateUser extends Component {
     let {name, email, password} = this.state
     return(
       <section>
-        <h2>Not a user? Make an account</h2>
+        <h2 className='sign-up-text'>Not a user? Make an account</h2>
         <input
           placeholder='Name'
           value={name}
@@ -55,7 +55,7 @@ export default class CreateUser extends Component {
           value={password}
           onChange={(e) => this.setState({password: e.target.value})} />
         <Link to='/'>
-          <button onClick={()=> this.handleCreateUser(name, email, password) }>Sign Up</button>
+          <button onClick={()=> this.handleCreateUser(name, email, password) } className='user-btn'>Sign Up</button>
         </Link>
         {/* { this.state.error ? <p>That email already has an account</p> : ''} */}
       </section>

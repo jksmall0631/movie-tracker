@@ -26,7 +26,7 @@ export const fakeStore = {
     vote_average: "4.2",
     overview: "Vampire death dealer Selene fends off brutal attacks from both the Lycan clan and the Vampire faction that betrayed her. With her only allies, David and his father Thomas, she must stop the eternal war between Lycans and Vampires, even if it means she has to make the ultimate sacrifice."
     }
-  ]
+  ],
   movies: [
     { id: 60,
     movie_id: 328111,
@@ -139,7 +139,7 @@ export const fakeStore = {
     vote_average: "4.2",
     overview: "Vampire death dealer Selene fends off brutal attacks from both the Lycan clan and the Vampire faction that betrayed her. With her only allies, David and his father Thomas, she must stop the eternal war between Lycans and Vampires, even if it means she has to make the ultimate sacrifice."
     }
-  ]
+  ],
   finalFaves: [
     {
     id: 69,

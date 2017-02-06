@@ -36,17 +36,19 @@ body {
 }*/
 
 .movie-title {
-  margin-bottom: 5px;
+  margin: 10px 0;
   font-family: 'Merriweather';
   font-weight: 700;
   font-size: 18px;
 }
 
 .movie-overview {
-  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
   font-family: 'Merriweather';
-  font-size: 12px;
-  line-height: 115%;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: left;
 }
 
 .star {
@@ -86,7 +88,7 @@ input {
   outline: none;
   font-size: 18px;
   background-color: #f6f6f6;
-  color: red;
+  color: black;
   position: absolute;
   top: 30px;
   right: 40px;

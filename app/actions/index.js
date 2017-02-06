@@ -41,6 +41,13 @@ export const newFavorite = (movie) => {
   }
 }
 
+export const deleteFavorite = (movie) => {
+  return {
+    type: 'DELETE_FAV',
+    delFav: movie,
+  }
+}
+
 export const finalFaves = (noDuplicates) => {
   return {
     type: 'FINAL_FAVS',

@@ -15,6 +15,7 @@ body {
 
 .header{
   background: black;
+  text-align: left;
 }
 
 .movie-container {
@@ -35,23 +36,19 @@ body {
 }*/
 
 .movie-title {
-  margin-bottom: 5px;
+  margin: 10px 0;
   font-family: 'Merriweather';
   font-weight: 700;
   font-size: 18px;
 }
 
 .movie-overview {
-  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
   font-family: 'Merriweather';
-  font-size: 12px;
-  line-height: 115%;
-}
-
-.signIn, .favs{
-  position: absolute;
-  top: 30px;
-  right: 40px;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: left;
 }
 
 .star {
@@ -61,32 +58,45 @@ body {
 
 .star:hover {
   color: #e5c100;
+  cursor: pointer;
 }
 
 input {
   width: 250px;
   font-size: 18px;
+  border-radius: 4px;
+  margin: 10px;
 }
-.user-btn, .back-btn {
+.user-btn {
   margin: 10px;
   width: 100px;
   border: none;
   outline: none;
   font-size: 18px;
-  background-color: black;
-  color: red;
+  border-radius: 4px;
 }
 
-.signIn, .favs {
+.user-btn {
+  background-color: black;
+  color: #f6f6f6;
+}
+
+
+.signIn, .favs, .back-btn {
   width: 150px;
   border: none;
   outline: none;
   font-size: 18px;
-  background-color: white;
-  color: red;
+  background-color: #f6f6f6;
+  color: black;
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  border-radius: 4px;
 }
 
 .sign-up-text {
+  font-family: sans-serif;
   margin-top: 20px;
   font-size: 24px;
 }

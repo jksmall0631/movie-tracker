@@ -18,21 +18,6 @@ App.prototype.componentWillMount = () => {
   jest.mock(defaultApiMovies)
 }
 
-const defaultProps = {
-  userSignInReducer: []
-}
-
-const props = {
-   userSignInReducer: {
-    user: {data: {
-      id: 2,
-      name: 'steph',
-      password: 'password',
-      email: 'fake@fake.com',
-    }},
-  }
-}
-
 const defaultWrapper = mount(
   <Provider store={defaultFakeStore}>
     <App {...defaultFakeStore} />

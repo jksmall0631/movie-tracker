@@ -39,7 +39,7 @@ describe('mapStateToProps', function () {
     const buttonText = defaultWrapper.find('.signIn').text()
     expect(buttonText).to.equal(' Sign In ')
 // how do we map state to props on the mounted component?  this is not how...
-    defaultWrapper.props.mapStateToProps(fakeStore)
+    defaultWrapper.mapStateToProps(fakeStore)
     expect(buttonText).to.not.exist
   })
 })

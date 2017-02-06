@@ -9,7 +9,7 @@ export default class CreateUser extends Component {
       name: '',
       email: '',
       password: '',
-      // error: '',
+      error: '',
     }
   }
   handleCreateUser (name, email, password) {
@@ -24,20 +24,17 @@ export default class CreateUser extends Component {
     })
     .then(response => response.json())
     .then(response => this.handleError(response))
-    .catch(e => alert('That email account has already has an account.'));
-
-    // .then(jsoned => console.log(jsoned))
   }
 
-  // handleError(response) {
-  //   if (!response.success) {
-  //     this.setState({ error: response })
-  //   }
-  //   return response
-  // }
+  handleError(response) {
+    if (response.error) {
+      alert('That email account already has an account')
+    }
+    return response
+  }
 
   render(){
-    let {name, email, password} = this.state
+    let { name, email, password } = this.state
     return(
       <section>
         <h2 className='sign-up-text'>Not a user? Make an account</h2>
@@ -57,7 +54,6 @@ export default class CreateUser extends Component {
         <Link to='/'>
           <button onClick={()=> this.handleCreateUser(name, email, password) } className='user-btn'>Sign Up</button>
         </Link>
-        {/* { this.state.error ? <p>That email already has an account</p> : ''} */}
       </section>
     )
   }

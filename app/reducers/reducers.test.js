@@ -21,7 +21,7 @@ describe('userSignInReducer', () => {
     expect(defaultState).to.exist
   })
 
-  it('should return state with a new user upon user login', ()=>{
+  it('should return state with a new user property upon user login', ()=>{
     const defaultState = userSignInReducer(undefined, {})
     const loginAction = {
       type: 'USER_LOGIN', action: {
@@ -33,12 +33,12 @@ describe('userSignInReducer', () => {
     }
     const testState = userSignInReducer(defaultState, loginAction)
     const newUserName = Object.values(testState.user)[1].name
-    expect(defaultState).to.not.equal.true
-    expect(testState).to.equal.true
+    expect(defaultState.user).to.not.exist
+    expect(testState.user).to.exist
     expect(newUserName).to.equal('Taylor')
   })
 
-  it('should return state with a new fav upon adding a fav', ()=>{
+  it('should return state with a new fav prop upon adding a fav', ()=>{
     const defaultState = userSignInReducer(undefined, {})
     const addFavAction = {
       type: 'ADD_FAVS', action: {
@@ -54,8 +54,8 @@ describe('userSignInReducer', () => {
     }
     const testState = userSignInReducer(defaultState, addFavAction)
     const newFaveTitle = Object.values(testState.fav)[1].title
-    expect(defaultState).to.not.equal.true
-    expect(testState).to.equal.true
+    expect(defaultState.fav).to.not.exist
+    expect(testState.fav).to.exist
     expect(newFaveTitle).to.equal('The Girl on the Train')
   })
 })
@@ -71,7 +71,7 @@ describe('movieReducer', () => {
     expect(defaultState).to.exist
   })
 
-  it('should return state with a new movie upon adding a movie', ()=>{
+  it('should return state with a new movie property upon adding a movie', ()=>{
     const defaultState = movieReducer(undefined, {})
     const addMovieAction = {
       type: 'ADD_MOVIES', movies: {
@@ -107,7 +107,7 @@ describe('movieReducer', () => {
       }
     }
     const testState = movieReducer(defaultState, toggleFavAction)
-    const toggleMovieTitle = Object.values(testState.toggle)[3]
+    const toggleMovieTitle = testState.toggle.movies.title
     expect(defaultState.toggle).to.not.exist
     expect(testState.toggle).to.exist
     expect(toggleMovieTitle).to.equal('The Girl on the Train')

@@ -46,7 +46,7 @@ export default class UserSignIn extends Component {
     return(
       <section>
         <Link to={'/'} >
-          <button className='back' className='user-btn'> Back </button>
+          <button className='back' className='back-btn'> Back </button>
         </Link>
         <h2 className='sign-up-text'>Already a user? Sign In</h2>
         <input

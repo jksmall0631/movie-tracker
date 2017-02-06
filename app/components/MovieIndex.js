@@ -6,7 +6,7 @@ import filterFavorites from './filterFavorites';
 
 export default class MovieIndex extends Component{
 
-  addFavorite(userId, movie) {
+  addFavorite(userId, movie, db, newFavs) {
     const server = ('http://localhost:3000/api/users/favorites/new')
     fetch(server, {
       method:'POST',
@@ -17,10 +17,15 @@ export default class MovieIndex extends Component{
       body: JSON.stringify({user_id: userId, movie_id: movie.id, title: movie.title, poster_path: movie.poster_path, release_date: movie.release_date, vote_average: movie.vote_average, overview: movie.overview})
     })
     .then(response => response.json())
-    .then(response => this.props.newFav(movie))
+    .then(response => {
+      this.props.newFav(movie)
+      let finalist = filterFavorites(db, newFavs)
+      console.log(this.props)
+      this.props.setFinalFavs(finalist);
+    })
   }
 
-  deleteFavorite (userId, movie, db, newFavs) {
+  deleteFavorite (userId, movie, db, delFavs) {
     const server = 'http://localhost:3000/api/users'
     fetch(`${server}/${userId}/favorites/${movie.id}`,
     {
@@ -33,7 +38,8 @@ export default class MovieIndex extends Component{
     .then(response => response.json())
     .then(response => {
       this.props.deleteFav(movie)
-      filterFavorites(db, newFavs)
+      let finalist = filterFavorites(db, delFavs)
+      this.props.setFinalFavs(finalist)
     })
   }
 
@@ -44,7 +50,7 @@ export default class MovieIndex extends Component{
                 <img src={ 'https://image.tmdb.org/t/p/w342' + movie.poster_path } />
                 <h3>{ movie.title }</h3>
                 <p>{ movie.overview }</p>
-                {this.props.userSignInReducer.user && window.location.pathname === '/' ? <button onClick={ () => this.addFavorite(this.props.userSignInReducer.user.data.id, movie) }> Favorite </button> : ''}
+                {this.props.userSignInReducer.user && window.location.pathname === '/' ? <button onClick={ () => this.addFavorite(this.props.userSignInReducer.user.data.id, movie, this.props.userSignInReducer.fav.data.data, this.props.movieIndexReducer) }> Favorite </button> : ''}
                 {this.props.userSignInReducer.user && window.location.pathname === '/favorites' ? <button onClick={ () => this.deleteFavorite(this.props.userSignInReducer.user.data.id, movie, this.props.userSignInReducer.fav.data.data, this.props.movieIndexReducer) }> Remove </button> : ''}
              </article>
            })

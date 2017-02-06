@@ -12,18 +12,23 @@ export default class CreateUser extends Component {
     }
   }
 
-  handleCreateUser(name, email, password){
-    const server = ('http://localhost:3000/api/users/new')
-    fetch(server, {
-      method:'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-      body: JSON.stringify({name: name, email: email, password: password})
-    })
-    .then(response => response.json())
-    .then(response => {!response.error ? this.setState({message: 'create user successful', name: '', email: '', password: ''}) : this.handleError(response)})
+  handleCreateUser (name, email, password) {
+    let emailCheck = this.checkEmail(email);
+    if(emailCheck){
+      const server = ('http://localhost:3000/api/users/new')
+      fetch(server, {
+        method:'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({name: name, email: email, password: password})
+      })
+      .then(response => response.json())
+      .then(response => {!response.error ? this.setState({message: 'create user successful', name: '', email: '', password: ''}) : this.handleError(response)})
+    } else {
+      this.setState({message: 'That email is not valid', name: '', email: '', password: ''})
+    }
   }
 
   handleError(response){

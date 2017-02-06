@@ -61,6 +61,11 @@ body {
   cursor: pointer;
 }
 
+.disabled-bth {
+  color: #e5c100;
+  cursor: pointer;
+}
+
 input {
   width: 250px;
   font-size: 18px;
@@ -99,4 +104,8 @@ input {
   font-family: sans-serif;
   margin-top: 20px;
   font-size: 24px;
+}
+
+button:hover {
+  color: red;
 }

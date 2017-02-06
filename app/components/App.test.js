@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router';
 import { Provider } from 'react-redux'
 import { expect, assert } from 'chai';
 import { shallow, mount } from 'enzyme'
@@ -28,5 +29,21 @@ describe('App', () => {
     const wrapper = shallow(<App userSignInReducer={activeUser}/>)
     expect(wrapper.find('h1')).to.have.length(1)
   });
+
+  it('renders one link route', () => {
+    const wrapper = shallow(<App userSignInReducer={activeUser}/>)
+    expect(wrapper.find('Link')).to.have.length(1)
+  });
+
+  it('renders one button', () => {
+    const wrapper = shallow(<App userSignInReducer={activeUser}/>)
+    expect(wrapper.find('button')).to.have.length(1)
+  });
+
+  it('button should have passed in prop for className', () => {
+const wrapper = shallow(<button className='signIn' />)
+expect(wrapper.props().className).to.equal('signIn');
+})
+
 
 });

@@ -9,3 +9,5 @@ const movieReducer = (state = [], action) => {
 }
 
 export default movieReducer;
+
+toggle: {}

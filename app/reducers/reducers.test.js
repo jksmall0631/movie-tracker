@@ -91,6 +91,27 @@ describe('movieReducer', () => {
     expect(testState.movies).to.exist
     expect(newMovieTitle).to.equal('The Girl on the Train')
   })
+
+  it('should return a new movie state that assigns a toggle property upon TOGGLE_FAVS', ()=>{
+    const defaultState = movieReducer(undefined, {})
+    const toggleFavAction = {
+      type: 'TOGGLE_FAVS', movies: {
+          id: 70,
+          movie_id: 346685,
+          user_id: 77,
+          title: "The Girl on the Train",
+          poster_path: "/n8WNMt7stqHUZEE7bEtzK4FwrWe.jpg",
+          release_date: "2016-10-05",
+          vote_average: "6",
+          overview: "Rachel Watson, devastated by her recent divorce, spends her daily commute fantasizing about the seemingly perfect couple who live in a house that her train passes every day, until one morning she sees something shocking happen there and becomes entangled in the mystery that unfolds."
+      }
+    }
+    const testState = movieReducer(defaultState, toggleFavAction)
+    const toggleMovieTitle = Object.values(testState.toggle)[3]
+    expect(defaultState.toggle).to.not.exist
+    expect(testState.toggle).to.exist
+    expect(toggleMovieTitle).to.equal('The Girl on the Train')
+  })
 })
 
 describe('allMoviesReducer', () => {
@@ -165,6 +186,26 @@ describe('movieIndexReducer', () => {
     expect(defaultState.new).to.not.exist
     expect(testState.new).to.exist
   })
+
+  it('should return a new movie object upon adding a delete favorite', () => {
+    const defaultState = movieIndexReducer(undefined, {})
+    const deleteFavAction = {
+      type: 'DELETE_FAV', delFav: {
+        id: 70,
+        movie_id: 346685,
+        user_id: 77,
+        title: "The Girl on the Train",
+        poster_path: "/n8WNMt7stqHUZEE7bEtzK4FwrWe.jpg",
+        release_date: "2016-10-05",
+        vote_average: "6",
+        overview: "Rachel Watson, devastated by her recent divorce, spends her daily commute fantasizing about the seemingly perfect couple who live in a house that her train passes every day, until one morning she sees something shocking happen there and becomes entangled in the mystery that unfolds."
+      }
+    }
+    const testState = movieIndexReducer(defaultState, deleteFavAction)
+    expect(defaultState.del).to.not.exist
+    expect(testState.del).to.exist
+  })
+
 })
 
 describe('allReducers', () => {

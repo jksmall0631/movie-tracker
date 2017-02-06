@@ -24,4 +24,9 @@ describe('App', () => {
     assert.equal(wrapper.type(), 'div')
   });
 
+  it('renders a header', () => {
+    const wrapper = shallow(<App userSignInReducer={activeUser}/>)
+    expect(wrapper.find('h1')).to.have.length(1)
+  });
+
 });

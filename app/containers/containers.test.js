@@ -5,6 +5,7 @@ import { shallow, mount } from 'enzyme'
 
 import { defaultFakeStore } from '../components/testing-stubs/store-stub'
 import { fakeStore } from '../components/testing-stubs/store-stub'
+import { stubMovie } from '../components/testing-stubs/store-stub'
 import defaultApiMovies from '../components/testing-stubs/default-movies-api-call-results'
 
 import mapDispatchToProps from './App-container'
@@ -50,4 +51,4 @@ describe('mapDispatchToProps', () => {
   })
 })
 
-allMoviesReducer = { finalFaves: {stubMovie}}
+const allMoviesReducer = { finalFaves: {stubMovie}}

@@ -87,8 +87,8 @@ describe('movieReducer', () => {
     }
     const testState = movieReducer(defaultState, addMovieAction)
     const newMovieTitle = Object.values(testState.movies)[3]
-    expect(defaultState).to.not.equal.true
-    expect(testState).to.equal.true
+    expect(defaultState.movies).to.not.exist
+    expect(testState.movies).to.exist
     expect(newMovieTitle).to.equal('The Girl on the Train')
   })
 })
@@ -130,8 +130,8 @@ describe('allMoviesReducer', () => {
     }
     const testState = allMoviesReducer(defaultState, favAction)
     const faveArray = Object.values(testState.finalFaves)
-    expect(defaultState).to.not.equal.true
-    expect(testState).to.equal.true
+    expect(defaultState.finalFaves).to.not.exist
+    expect(testState.finalFaves).to.exist
     expect(faveArray).to.have.length(2)
   })
 })
@@ -147,7 +147,7 @@ describe('movieIndexReducer', () => {
     expect(defaultState).to.exist
   })
 
-  it('should return an array with a new movie object upon adding a new favorite', () => {
+  it('should return a new movie object upon adding a new favorite', () => {
     const defaultState = movieIndexReducer(undefined, {})
     const newFavAction = {
       type: 'NEW_FAV', newFav: {
@@ -161,12 +161,9 @@ describe('movieIndexReducer', () => {
         overview: "Rachel Watson, devastated by her recent divorce, spends her daily commute fantasizing about the seemingly perfect couple who live in a house that her train passes every day, until one morning she sees something shocking happen there and becomes entangled in the mystery that unfolds."
       }
     }
-
     const testState = movieIndexReducer(defaultState, newFavAction)
-    const faveArray = testState
-    expect(defaultState).to.not.equal.true
-    expect(testState).to.equal.true
-    expect(faveArray).to.have.length(1)
+    expect(defaultState.new).to.not.exist
+    expect(testState.new).to.exist
   })
 })
 

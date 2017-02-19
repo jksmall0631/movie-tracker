@@ -1,35 +1,40 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
-import MovieIndex from '../containers/MovieIndex-container';
+import SingleMovie from './SingleMovie';
+// import MovieIndex from '../containers/MovieIndex-container';
 
 export default class FavMovies extends Component{
 
-  // componentWillMount(){
-  //   this.filterFavorites()
-  // }
-  //
-  // filterFavorites (dbFavs, newFavs) {
-  //   let added = newFavs.map((stuff) => {
-  //     return stuff.add
-  //   })
-  //   let deleted = newFavs.map((stuff) => {
-  //     return stuff.del
-  //   })
-  //   let finalFaves = (dbFavs).concat(added) || []
-  //   let noDuplicates = _.uniq(finalFaves, (movie) => {
-  //     return movie.title;
-  //   });
-  //   this.props.setFinalFavs(noDuplicates);
-  //   // this.props.switchToFavs();
-  // }
+  deleteFavorite (movie) {
+    let userId = this.props.userSignInReducer.user.data.id
+    const server = 'http://localhost:3000/api/users'
+    fetch(`${server}/${userId}/favorites/${movie.id}`,
+    {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+    })
+    .then(response => response.json())
+    .then(response => {
+      movie.fav = false;
+      let finalist = filterFavorites(db, movie, storeFavs)
+      this.props.setFinalFavs(finalist)
+    })
+  }
 
   render(){
+    console.log(this.props)
     return(
       <div>
         <Link to={'/'} >
           <button className='back-btn'> Back </button>
         </Link>
-        <MovieIndex movies={this.props.allMoviesReducer.finalFaves}/>
+        {/* <MovieIndex movies={this.props.allMoviesReducer.favs.finalFaves}/> */}
+        <SingleMovie
+          movies={this.props.movieReducer.movies}
+          addDeleteFavorite={this.deleteFavorite}/>
       </div>
     )
   }

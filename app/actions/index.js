@@ -47,9 +47,9 @@ export const deleteFavorite = (movie) => {
   }
 }
 
-export const finalFaves = (noDuplicates) => {
+export const finalFaves = (finalist) => {
   return {
     type: 'FINAL_FAVS',
-    finalFaves: noDuplicates,
+    finalFaves: finalist,
   }
 }

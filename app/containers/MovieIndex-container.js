@@ -15,8 +15,8 @@ const mapDispatchToProps = (dispatch) => {
     deleteFav: (movie) => {
       dispatch(deleteFavorite(movie))
     },
-    setFinalFavs: (noDuplicates) => {
-      dispatch(finalFaves(noDuplicates))
+    setFinalFavs: (finalist) => {
+      dispatch(finalFaves(finalist))
     }
   }
 }

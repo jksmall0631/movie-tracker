@@ -6,12 +6,5 @@ const mapStateToProps = (state) => {
   return state
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setFinalFavs: (noDuplicates) => {
-      dispatch(finalFaves(noDuplicates))
-    }
-  }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(AllMovies)
+export default connect(mapStateToProps)(AllMovies)

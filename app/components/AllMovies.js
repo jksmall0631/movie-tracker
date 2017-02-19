@@ -3,12 +3,16 @@ import {Link} from 'react-router';
 import _ from 'underscore';
 // import MovieIndex from '../containers/MovieIndex-container';
 import SingleMovie from './SingleMovie';
-import filterFavorites from './filterFavorites';
+// import filterFavorites from './filterFavorites';
 
 export default class AllMovies extends Component{
+  constructor(){
+    super();
+    this.addFavorite = this.addFavorite.bind(this);
+  }
 
   addFavorite(movie) {
-    let userId = this.props.userSignInReducer.user.data.id
+    let userId = this.props.userSignInReducer ? this.props.userSignInReducer.user.data.id : '';
     const server = ('http://localhost:3000/api/users/favorites/new')
     fetch(server, {
       method:'POST',
@@ -27,9 +31,7 @@ export default class AllMovies extends Component{
     })
     .then(response => response.json())
     .then(response => {
-      movie.fav = true;
-      let finalist = filterFavorites(db, movie, storeFavs)
-      this.props.setFinalFavs(finalist);
+      this.props.addFav(movie);
     })
   }
 

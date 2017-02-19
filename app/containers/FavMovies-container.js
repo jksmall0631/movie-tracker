@@ -6,4 +6,12 @@ const mapStateToProps = (state) => {
   return state
 }
 
-export default connect(mapStateToProps)(FavMovies)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteFav: (movie) => {
+      dispatch(deleteFav(movie))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FavMovies)

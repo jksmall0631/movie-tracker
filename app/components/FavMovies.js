@@ -4,6 +4,10 @@ import SingleMovie from './SingleMovie';
 // import MovieIndex from '../containers/MovieIndex-container';
 
 export default class FavMovies extends Component{
+  constructor(){
+    super();
+    this.deleteFavorite = this.deleteFavorite.bind(this);
+  }
 
   deleteFavorite (movie) {
     let userId = this.props.userSignInReducer.user.data.id
@@ -18,9 +22,7 @@ export default class FavMovies extends Component{
     })
     .then(response => response.json())
     .then(response => {
-      movie.fav = false;
-      let finalist = filterFavorites(db, movie, storeFavs)
-      this.props.setFinalFavs(finalist)
+      this.props.deleteFav(movie);
     })
   }
 

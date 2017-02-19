@@ -33,17 +33,17 @@ export const falseFavs = () => {
   }
 }
 
-export const newFavorite = (movie) => {
+export const addFav = (movie) => {
   return {
-    type: 'NEW_FAV',
-    newFav: movie,
+    type: 'ADD_FAV',
+    movie,
   }
 }
 
-export const deleteFavorite = (movie) => {
+export const deleteFav = (movie) => {
   return {
     type: 'DELETE_FAV',
-    delFav: movie,
+    movie,
   }
 }
 

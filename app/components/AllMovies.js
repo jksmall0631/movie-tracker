@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
-import _ from 'underscore';
-// import MovieIndex from '../containers/MovieIndex-container';
 import SingleMovie from './SingleMovie';
-// import filterFavorites from './filterFavorites';
 
 export default class AllMovies extends Component{
   constructor(){
@@ -13,6 +10,7 @@ export default class AllMovies extends Component{
 
   addFavorite(movie) {
     let userId = this.props.userSignInReducer ? this.props.userSignInReducer.user.data.id : '';
+    let dbFavs = this.props.userSignInReducer.fav.data.data;
     const server = ('http://localhost:3000/api/users/favorites/new')
     fetch(server, {
       method:'POST',
@@ -31,7 +29,7 @@ export default class AllMovies extends Component{
     })
     .then(response => response.json())
     .then(response => {
-      this.props.addFav(movie);
+      this.props.addFav(movie, dbFavs);
     })
   }
 
@@ -53,7 +51,7 @@ export default class AllMovies extends Component{
     return(
       <div>
         <Link to={'/favorites'} >
-          {this.props.userSignInReducer.user && !this.props.movieReducer.toggle ? <button className='favs' onClick={() => this.moveToFavorites(this.props.userSignInReducer.fav.data.data, this.props.movieIndexReducer, this.props.allMoviesReducer.finalFaves)}> Show Favorites </button> : ''}
+          {this.props.userSignInReducer.user && !this.props.movieReducer.toggle ? <button className='favs'> Show Favorites </button> : ''}
         </Link>
         {movie}
       </div>

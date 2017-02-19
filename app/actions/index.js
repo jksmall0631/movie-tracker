@@ -33,10 +33,11 @@ export const falseFavs = () => {
   }
 }
 
-export const addFav = (movie) => {
+export const addFav = (movie, dbFavs) => {
   return {
     type: 'ADD_FAV',
     movie,
+    dbFavs,
   }
 }
 

@@ -8,8 +8,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addFav: (movie) => {
-      dispatch(addFav(movie))
+    addFav: (movie, dbFavs) => {
+      dispatch(addFav(movie, dbFavs))
     }
   }
 }

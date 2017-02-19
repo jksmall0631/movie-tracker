@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
 import SingleMovie from './SingleMovie';
-// import MovieIndex from '../containers/MovieIndex-container';
 
 export default class FavMovies extends Component{
   constructor(){
@@ -27,16 +26,28 @@ export default class FavMovies extends Component{
   }
 
   render(){
-    console.log(this.props)
+    let favMovies = this.props.allMoviesReducer;
+    let movie;
+    if(favMovies){
+      movie = favMovies.map((movie) => {
+        console.log(movie.movie);
+        return (
+          <SingleMovie
+            key={movie.movie.id}
+            movie={movie.movie}
+            addDeleteFavorite={this.deleteFavorite}/>
+        );
+      })
+    }else{
+      movie = 'No Movies';
+    }
     return(
       <div>
         <Link to={'/'} >
           <button className='back-btn'> Back </button>
         </Link>
         {/* <MovieIndex movies={this.props.allMoviesReducer.favs.finalFaves}/> */}
-        <SingleMovie
-          movies={this.props.movieReducer.movies}
-          addDeleteFavorite={this.deleteFavorite}/>
+        {movie}
       </div>
     )
   }

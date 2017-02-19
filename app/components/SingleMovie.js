@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-// import filterFavorites from './filterFavorites';
 
 const SingleMovie = ({movie, addDeleteFavorite}) => {
 

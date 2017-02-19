@@ -1,7 +1,5 @@
 const allMoviesReducer = (state = [], action) => {
   switch(action.type){
-    case 'FINAL_FAVS':
-      return [...state, action]
     case 'ADD_FAV':
       let status = true;
       state.forEach((movie) => {

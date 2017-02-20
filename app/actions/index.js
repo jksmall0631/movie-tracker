@@ -19,37 +19,16 @@ export const favorites = (data) => {
   }
 }
 
-export const toggleFavs = () => {
+export const addFav = (movie) => {
   return {
-    type: 'TOGGLE_FAVS',
-    favs: true,
+    type: 'ADD_FAV',
+    movie,
   }
 }
 
-export const falseFavs = () => {
-  return {
-    type: 'TOGGLE_FAVS',
-    favs: false,
-  }
-}
-
-export const newFavorite = (movie) => {
-  return {
-    type: 'NEW_FAV',
-    newFav: movie,
-  }
-}
-
-export const deleteFavorite = (movie) => {
+export const deleteFav = (movie) => {
   return {
     type: 'DELETE_FAV',
-    delFav: movie,
-  }
-}
-
-export const finalFaves = (noDuplicates) => {
-  return {
-    type: 'FINAL_FAVS',
-    finalFaves: noDuplicates,
+    movie,
   }
 }

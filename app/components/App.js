@@ -23,6 +23,9 @@ export default class App extends Component {
           <Link to='/login'>
             {!this.props.userSignInReducer.user ? <button className='signIn'> Sign In </button> : ''}
           </Link>
+          <Link to='/favorites'>
+            {this.props.userSignInReducer.user && !this.props.movieReducer.toggle ? <button className='favs'> Show Favorites </button> : ''}
+          </Link>
         </div>
         {this.props.children}
       </div>

@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import {createStore} from 'redux';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+
+import allReducers from './reducers/index';
+import {Provider} from 'react-redux';
+
 import App from './containers/App-container';
 import AllMovies from './containers/AllMovies-container';
 import FavMovies from './containers/FavMovies-container';
-// import MovieIndex from './containers/MovieIndex-container';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import allReducers from './reducers/index';
 import Login from './components/Login';
-import {Provider} from 'react-redux';
+
 
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 const store = createStore(allReducers, devTools);

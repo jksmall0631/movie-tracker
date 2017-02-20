@@ -6,7 +6,6 @@ import { shallow, mount } from 'enzyme'
 import Login from './Login';
 
 describe('Login', function () {
-
   it('renders as a section', () => {
     const wrapper = shallow(<Login />)
     assert.equal(wrapper.type(), 'section')
@@ -19,7 +18,6 @@ describe('Login', function () {
 
   it.skip('renders a UserSignIn component', ()=> {
     const wrapper = shallow(<Login />)
-    console.log(wrapper.debug());
     expect(wrapper.find('UserSignIn')).to.have.length(1)
   })
 });

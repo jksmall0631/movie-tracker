@@ -39,5 +39,4 @@ describe('UserSignIn', function () {
     wrapper.find('.log-in').simulate('click')
     expect(handleClick.calledOnce).to.equal(true)
   })
-
 });

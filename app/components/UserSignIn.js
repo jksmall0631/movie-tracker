@@ -10,7 +10,7 @@ export default class UserSignIn extends Component {
     }
   }
 
-  showFavorites (userId) {
+  showFavorites(userId){
     const server = (`http://localhost:3000/api/users/${userId}/favorites`)
     fetch(server, {
       method:'GET',
@@ -23,7 +23,7 @@ export default class UserSignIn extends Component {
     .then(response => this.props.handleFavorites(response))
   }
 
-  handleSignIn (username, password) {
+  handleSignIn (username, password){
     const server = ('http://localhost:3000/api/users')
     fetch(server, {
       method:'POST',
@@ -41,7 +41,7 @@ export default class UserSignIn extends Component {
   }
 
   render(){
-    let {username, password, error} = this.state
+    let { username, password, error } = this.state
     return(
       <section>
         <Link to={'/'} >
@@ -49,7 +49,7 @@ export default class UserSignIn extends Component {
         </Link>
         <h2 className='sign-up-text'>Already a user? Sign In</h2>
         <input
-          placeholder='Username'
+          placeholder='Email'
           value={username}
           onChange={(e) => this.setState({ username : e.target.value})} />
         <input
@@ -60,7 +60,6 @@ export default class UserSignIn extends Component {
         <Link to='/'>
           <button onClick={()=> this.handleSignIn(username, password)} className='user-btn'> Sign In </button>
         </Link>
-        { error ? <p>Invalid Email/Password</p> : '' }
       </section>
     )
   }

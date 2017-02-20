@@ -2,7 +2,6 @@ import * as actions from './index.js'
 import stubMovie from '../components/testing-stubs/stub-movie'
 
 describe('actions', () => {
-
   it('should create an action to add a user', () => {
     const data = {
       id: 1,

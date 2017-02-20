@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
 
-
 export default class CreateUser extends Component {
   constructor(){
     super();
@@ -12,6 +11,7 @@ export default class CreateUser extends Component {
       message: '',
     }
   }
+
   handleCreateUser (name, email, password) {
     let emailCheck = this.checkEmail(email);
     if(emailCheck){
@@ -31,7 +31,7 @@ export default class CreateUser extends Component {
     }
   }
 
-  handleError(response) {
+  handleError(response){
     if (response.error) {
       this.setState({message: 'That email account already has an account'})
     }

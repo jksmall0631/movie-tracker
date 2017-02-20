@@ -26,7 +26,7 @@ body {
 .movie-card {
   background-color: white;
   margin: 10px;
-  display: block;
+  /*display: block;*/
   width: 342px;
   box-shadow: 5px 5px 3px #888888;
 }

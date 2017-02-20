@@ -19,20 +19,6 @@ export const favorites = (data) => {
   }
 }
 
-export const toggleFavs = () => {
-  return {
-    type: 'TOGGLE_FAVS',
-    favs: true,
-  }
-}
-
-export const falseFavs = () => {
-  return {
-    type: 'TOGGLE_FAVS',
-    favs: false,
-  }
-}
-
 export const addFav = (movie) => {
   return {
     type: 'ADD_FAV',
@@ -44,12 +30,5 @@ export const deleteFav = (movie) => {
   return {
     type: 'DELETE_FAV',
     movie,
-  }
-}
-
-export const finalFaves = (finalist) => {
-  return {
-    type: 'FINAL_FAVS',
-    finalFaves: finalist,
   }
 }

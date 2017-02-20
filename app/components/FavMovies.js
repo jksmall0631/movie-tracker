@@ -27,27 +27,27 @@ export default class FavMovies extends Component{
 
   render(){
     let favMovies = this.props.allMoviesReducer;
-    let movie;
+    let movies;
     if(favMovies){
-      movie = favMovies.map((movie) => {
+      movies = favMovies.map((movie) => {
         console.log(movie);
         return (
           <SingleMovie
             key={movie.id}
             movie={movie}
-            addDeleteFavorite={this.deleteFavorite}/>
+            addDeleteFavorite={this.deleteFavorite}
+            buttonText='Remove'/>
         );
       })
     }else{
-      movie = 'No Movies';
+      movies = 'No Movies';
     }
     return(
-      <div>
+      <div className='movie-container'>
         <Link to={'/'} >
           <button className='back-btn'> Back </button>
         </Link>
-        {/* <MovieIndex movies={this.props.allMoviesReducer.favs.finalFaves}/> */}
-        {movie}
+        {movies}
       </div>
     )
   }

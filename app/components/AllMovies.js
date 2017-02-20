@@ -34,25 +34,23 @@ export default class AllMovies extends Component{
 
   render(){
     let allMovies = this.props.movieReducer.movies;
-    let movie;
+    let movies;
     if(allMovies){
-      movie = allMovies.map((movie) => {
+      movies = allMovies.map((movie) => {
         return (
           <SingleMovie
             key={movie.id}
             movie={movie}
-            addDeleteFavorite={this.addFavorite}/>
+            addDeleteFavorite={this.addFavorite}
+            buttonText='&#9734;'/>
         );
       })
     }else{
-      movie = 'No Movies';
+      movies = 'No Movies';
     }
     return(
-      <div>
-        <Link to={'/favorites'} >
-          {this.props.userSignInReducer.user && !this.props.movieReducer.toggle ? <button className='favs'> Show Favorites </button> : ''}
-        </Link>
-        {movie}
+      <div className='movie-container'>
+        {movies}
       </div>
     )
   }

@@ -7,7 +7,6 @@ export default class UserSignIn extends Component {
     this.state = {
       username: '',
       password: '',
-      // error: '',
     }
   }
 

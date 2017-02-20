@@ -30,11 +30,11 @@ export default class FavMovies extends Component{
     let movie;
     if(favMovies){
       movie = favMovies.map((movie) => {
-        console.log(movie.movie);
+        console.log(movie);
         return (
           <SingleMovie
-            key={movie.movie.id}
-            movie={movie.movie}
+            key={movie.id}
+            movie={movie}
             addDeleteFavorite={this.deleteFavorite}/>
         );
       })

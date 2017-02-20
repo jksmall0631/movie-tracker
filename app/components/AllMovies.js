@@ -10,7 +10,6 @@ export default class AllMovies extends Component{
 
   addFavorite(movie) {
     let userId = this.props.userSignInReducer ? this.props.userSignInReducer.user.data.id : '';
-    let dbFavs = this.props.userSignInReducer.fav.data.data;
     const server = ('http://localhost:3000/api/users/favorites/new')
     fetch(server, {
       method:'POST',
@@ -29,7 +28,7 @@ export default class AllMovies extends Component{
     })
     .then(response => response.json())
     .then(response => {
-      this.props.addFav(movie, dbFavs);
+      this.props.addFav(movie);
     })
   }
 
